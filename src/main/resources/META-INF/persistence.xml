@@ -9,7 +9,7 @@
         
      <properties>
         <property name="javax.persistence.jdbc.url" 
-                  value="jdbc:h2:mem:test"/>            
+                  value="jdbc:h2:mem:sales"/>            
         <property name="javax.persistence.jdbc.driver" 
                   value="org.h2.Driver"/>
         <property name="javax.persistence.jdbc.user" 
