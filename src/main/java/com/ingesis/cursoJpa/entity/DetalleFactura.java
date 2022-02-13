@@ -9,18 +9,18 @@ import javax.persistence.Entity;
 import lombok.Data;
 
 @Data
-@Entity
+@Entity(name="DETALLE_FACTURA")
 public class DetalleFactura implements Serializable{
 
 	@EmbeddedId
 	private DetalleFacturaId detalleFacturaId;
 	
-	@Column
-	private Integer noProductos;
+	@Column(name="no_fila")
+	private Integer noFila;
 	
-	@Column
+	@Column(name="precio_unitario")
 	private Double precioUnitario;
 	
-	@Column 
+	@Column(name="cantidad") 
 	private Integer cantidad;
 }

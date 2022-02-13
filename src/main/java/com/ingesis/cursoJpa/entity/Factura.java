@@ -14,40 +14,36 @@ import javax.persistence.OneToMany;
 import lombok.Data;
 
 @Data
-@Entity
+@Entity(name="FACTURA")
 public class Factura implements Serializable{
 	@Id
+	@Column(name="id_factura")
 	private Integer idFactura;
 	
-	@Column(name="numeroFactura")
+	@Column(name="numero_factura")
 	private Integer numeroFactura;
 	
 	@Column(name="serie")
 	private String serie;
 	
-	/*
-	 * @JoinColumn(name = "idCliente", referencedColumnName = "idCliente",
-	 * table="cliente")
-	 * 
-	 * @ManyToOne private Cliente cliente;
-	 * 
-	 * @JoinColumn(name = "idVendedor", referencedColumnName = "idVendedor",
-	 * table="vendedor")
-	 * 
-	 * @ManyToOne private Vendedor Vendedor;
-	 */
-	
+	@JoinColumn(name = "id_cliente")
+	@ManyToOne 
+	private Cliente cliente;
+	 
+	//@JoinColumn(name = "id_vendedor", referencedColumnName = "id_vendedor",
+	//		    table="vendedor")
+	//@ManyToOne 
+	//private Vendedor Vendedor; 
+	 
 	@Column(name="fecha")
 	private Data fecha;
 	
-	@Column(name="montoTotal")
+	@Column(name="monto_total")
 	private Double montoTotal;
 
-	/*
-	 * @JoinColumn(name = "idFactura", referencedColumnName = "idFactura",
-	 * table="DetalleFactura")
-	 * 
-	 * @OneToMany(fetch=FetchType.LAZY) private List<DetalleFactura> detalleFactura;
-	 */
+	@JoinColumn(name = "idFactura", referencedColumnName = "idFactura", insertable = false, updatable = false)
+	@OneToMany(fetch=FetchType.LAZY) 
+	private List<DetalleFactura> detalleFactura;
+	 
 	
 }

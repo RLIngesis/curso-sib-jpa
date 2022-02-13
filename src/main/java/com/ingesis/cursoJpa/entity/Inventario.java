@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import lombok.Data;
 
 @Data
-@Entity
+@Entity(name="INVENTARIO")
 public class Inventario implements Serializable {
 	
 	@EmbeddedId

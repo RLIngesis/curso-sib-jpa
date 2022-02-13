@@ -13,13 +13,13 @@ import lombok.Data;
 @Embeddable
 public class InventarioId implements Serializable {
 	
-	@Column(name="idInventario")
+	@Column(name="id_inventario")
 	private Integer idInventario;
 	
-	@Column(name="idProducto")
+	@Column(name="id_producto")
 	private Integer idProducto;
 	
-	@Column(name="idCategoria")
+	@Column(name="id_categoria")
 	private Integer idCategoria;
 	
 }

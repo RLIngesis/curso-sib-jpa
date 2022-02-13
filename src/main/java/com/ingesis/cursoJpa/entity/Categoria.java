@@ -9,11 +9,11 @@ import javax.persistence.Id;
 import lombok.Data;
 
 @Data
-@Entity
+@Entity(name="CATEGORIA")
 public class Categoria implements Serializable {
 
 	@Id
-	@Column(name="idCategoria")
+	@Column(name="id_categoria")
 	private Integer idCategoria;
 	
 	@Column(nullable = false, length = 100)

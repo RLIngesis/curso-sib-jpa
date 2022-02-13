@@ -9,11 +9,12 @@ import javax.persistence.Id;
 import lombok.Data;
 
 @Data
-@Entity
+@Entity(name="CLIENTE")
 public class Cliente implements Serializable {
 
     @Id
-    private Integer id;
+    @Column(name="id_cliente")
+    private Integer idCliente;
     
     @Column(nullable = false)
     private String nombre;

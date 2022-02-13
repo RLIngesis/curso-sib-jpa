@@ -10,9 +10,9 @@ import lombok.Data;
 @Data
 public class ProductId implements Serializable {
 
-	@Column(name="idProducto")
+	@Column(name="id_producto")
 	private Integer idProducto;
 	
-	@Column(name="idCategoria")
+	@Column(name="id_categoria")
 	private Integer idCategoria;
 }

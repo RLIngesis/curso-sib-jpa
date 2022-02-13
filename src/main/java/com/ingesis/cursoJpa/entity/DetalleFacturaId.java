@@ -14,18 +14,18 @@ import lombok.Data;
 public class DetalleFacturaId implements Serializable {
 
 	@Basic(optional = false)
-	@Column(name="idDetalleFactura")
+	@Column(name="id_detalle_factura")
 	private Integer idDetalleFactura;
 	
 	@Basic(optional = false)
-	@Column(name="idFactura")
+	@Column(name="id_factura")
 	private Integer idFactura;
 	
 	@Basic(optional = false)
-	@Column(name="idProducto")
+	@Column(name="id_producto")
 	private Integer idProducto;
 	
 	@Basic(optional = false)
-	@Column(name="idCategoria")
+	@Column(name="id_categoria")
 	private Integer idCategoria;
 }

@@ -1,41 +1,3 @@
-drop table sucursal_vendedor;
-drop table sucursal;
-drop table vendedor;
-drop table cliente;
-
-
-create table cliente (
-    id_cliente number,
-    nombre varchar,
-    direccion varchar,
-    nit varchar,
-    telefono varchar,
-    email varchar,
-    primary key (id_cliente)
-);
-
-create table sucursal (
-    id_sucursal number,
-    nombre varchar,
-    direccion varchar,
-    primary key (id_sucursal)
-);
-
-create table vendedor (
-    id_vendedor number,
-    nombre varchar,
-    puesto varchar,
-    primary key (id_vendedor)
-);
-
-create table sucursal_vendedor (
-    id_sucursal number,
-    id_vendedor number,
-    primary key (id_sucursal, id_vendedor),
-    foreign key (id_sucursal) references sucursal(id_sucursal),
-    foreign key (id_vendedor) references vendedor(id_vendor)
-);
-
 insert into cliente (id_cliente, nombre, direccion, nit, telefono, email) values (1, 'Yvette Brabender', '3509 Everett Drive', '0811614271', '(961) 8675969', 'ybrabender0@twitpic.com');
 insert into cliente (id_cliente, nombre, direccion, nit, telefono, email) values (2, 'Dorian Doby', '8 Pond Terrace', '6797333024', '(539) 1686115', 'ddoby1@bizjournals.com');
 insert into cliente (id_cliente, nombre, direccion, nit, telefono, email) values (3, 'Shoshanna Catanheira', '49 Messerschmidt Avenue', '7199708793', '(812) 6630733', 'scatanheira2@amazon.co.uk');
@@ -124,3 +86,106 @@ insert into sucursal_vendedor (id_sucursal, id_vendedor) values (4,12);
 insert into sucursal_vendedor (id_sucursal, id_vendedor) values (5,13);
 insert into sucursal_vendedor (id_sucursal, id_vendedor) values (5,14);
 insert into sucursal_vendedor (id_sucursal, id_vendedor) values (5,15);
+
+insert into categoria(id_categoria,nombre,descripcion) values (1,'LACTEOS','LACTEOS');
+insert into categoria(id_categoria,nombre,descripcion) values (2,'EMBUTIDOS','EMBUTIDOS');
+insert into categoria(id_categoria,nombre,descripcion) values (3,'CARNES Y PESCADOS','CARNES Y PESCADOS');
+insert into categoria(id_categoria,nombre,descripcion) values (4,'JUEGOS Y BEBIDAS','JUEGOS Y BEBIDAS');
+insert into categoria(id_categoria,nombre,descripcion) values (5,'PANADERIA','PANADERIA');
+
+
+insert into producto(id_producto,id_categoria,codigo_producto,descripcion,unidad_medida,presentacion,precio_unitario,unidad_presentacion) values (1,1,'10002334','Leche Deslactosada','Mililitros',1000,12,'Unidad');
+insert into producto(id_producto,id_categoria,codigo_producto,descripcion,unidad_medida,presentacion,precio_unitario,unidad_presentacion) values (2,1,'10002335','Leche de Soya','Mililitros',1000,14,'Unidad');
+insert into producto(id_producto,id_categoria,codigo_producto,descripcion,unidad_medida,presentacion,precio_unitario,unidad_presentacion) values (3,1,'10002336','En Polvo','Gramos',1600,100,'Bote');
+insert into producto(id_producto,id_categoria,codigo_producto,descripcion,unidad_medida,presentacion,precio_unitario,unidad_presentacion) values (4,1,'10002337','Evaporada','Gramos',315,12.1,'Unidad');
+insert into producto(id_producto,id_categoria,codigo_producto,descripcion,unidad_medida,presentacion,precio_unitario,unidad_presentacion) values (5,2,'10002338','Jamon Santa Lucia de Pavo','Libra',25,400,'Unidad');
+insert into producto(id_producto,id_categoria,codigo_producto,descripcion,unidad_medida,presentacion,precio_unitario,unidad_presentacion) values (6,2,'10002339','Tocino Ahumado Chimex','Gramos',170,30,'Unidad');
+insert into producto(id_producto,id_categoria,codigo_producto,descripcion,unidad_medida,presentacion,precio_unitario,unidad_presentacion) values (7,2,'10002340','Salchicha Perry de Pavo','Gramos',460,15,'Unidad');
+insert into producto(id_producto,id_categoria,codigo_producto,descripcion,unidad_medida,presentacion,precio_unitario,unidad_presentacion) values (8,2,'10002341','Pate Toledo','Libra',0.5,5,'Unidad');
+insert into producto(id_producto,id_categoria,codigo_producto,descripcion,unidad_medida,presentacion,precio_unitario,unidad_presentacion) values (9,3,'10002342','Pierna de Cerdo Ahumada','Libra',1,40,'Unidad');
+insert into producto(id_producto,id_categoria,codigo_producto,descripcion,unidad_medida,presentacion,precio_unitario,unidad_presentacion) values (10,3,'10002343','Lomo cinta de cerdo','Libra',1,50,'Unidad');
+insert into producto(id_producto,id_categoria,codigo_producto,descripcion,unidad_medida,presentacion,precio_unitario,unidad_presentacion) values (11,3,'10002344','Filete de Pechuga','Libra',1,40,'Unidad');
+insert into producto(id_producto,id_categoria,codigo_producto,descripcion,unidad_medida,presentacion,precio_unitario,unidad_presentacion) values (12,3,'10002345','Mollejas Rey Bandeja','Libra',1,25,'Unidad');
+insert into producto(id_producto,id_categoria,codigo_producto,descripcion,unidad_medida,presentacion,precio_unitario,unidad_presentacion) values (13,4,'10002346','Coca cola sin azucar','Litro',2.5,20,'Unidad');
+insert into producto(id_producto,id_categoria,codigo_producto,descripcion,unidad_medida,presentacion,precio_unitario,unidad_presentacion) values (14,4,'10002347','Canada Dry','Mililitros',2000,10,'Unidad');
+insert into producto(id_producto,id_categoria,codigo_producto,descripcion,unidad_medida,presentacion,precio_unitario,unidad_presentacion) values (15,4,'10002348','De la granja naranja','Mililitros',3400,20,'Unidad');
+insert into producto(id_producto,id_categoria,codigo_producto,descripcion,unidad_medida,presentacion,precio_unitario,unidad_presentacion) values (16,4,'10002349','Rabinal de mandarina','Mililitros',1800,22,'Unidad');
+insert into producto(id_producto,id_categoria,codigo_producto,descripcion,unidad_medida,presentacion,precio_unitario,unidad_presentacion) values (17,5,'10002350','Pan Europa Sandwich','Gramos',690,17,'Unidad');
+insert into producto(id_producto,id_categoria,codigo_producto,descripcion,unidad_medida,presentacion,precio_unitario,unidad_presentacion) values (18,5,'10002351','Tortilla Trigo','Gramos',260,12,'Unidad');
+insert into producto(id_producto,id_categoria,codigo_producto,descripcion,unidad_medida,presentacion,precio_unitario,unidad_presentacion) values (19,5,'10002352','Pan tostado','Gramos',210,20,'Unidad');
+insert into producto(id_producto,id_categoria,codigo_producto,descripcion,unidad_medida,presentacion,precio_unitario,unidad_presentacion) values (20,5,'10002353','Champurradas','Gramos',454,15,'Unidad');
+
+
+insert into factura(id_factura,id_cliente,id_vendedor,fecha,monto_total,serie,numero_factura) values (1,1,1,parsedatetime('02/01/2022','dd/MM/yyyy'),200,'FACE-10001',456567891);
+insert into factura(id_factura,id_cliente,id_vendedor,fecha,monto_total,serie,numero_factura) values (2,4,1,parsedatetime('02/01/2022','dd/MM/yyyy'),300,'FACE-10002',456567892);
+insert into factura(id_factura,id_cliente,id_vendedor,fecha,monto_total,serie,numero_factura) values (3,5,1,parsedatetime('02/01/2022','dd/MM/yyyy'),100,'FACE-10003',456567893);
+insert into factura(id_factura,id_cliente,id_vendedor,fecha,monto_total,serie,numero_factura) values (4,4,1,parsedatetime('05/01/2022','dd/MM/yyyy'),48.25,'FACE-10004',456567894);
+insert into factura(id_factura,id_cliente,id_vendedor,fecha,monto_total,serie,numero_factura) values (5,10,1,parsedatetime('05/01/2022','dd/MM/yyyy'),48.25,'FACE-10005',456567895);
+insert into factura(id_factura,id_cliente,id_vendedor,fecha,monto_total,serie,numero_factura) values (6,14,2,parsedatetime('10/01/2022','dd/MM/yyyy'),60.75,'FACE-10006',456567896);
+insert into factura(id_factura,id_cliente,id_vendedor,fecha,monto_total,serie,numero_factura) values (7,21,2,parsedatetime('15/01/2022','dd/MM/yyyy'),60.75,'FACE-10007',456567897);
+insert into factura(id_factura,id_cliente,id_vendedor,fecha,monto_total,serie,numero_factura) values (8,24,2,parsedatetime('15/01/2022','dd/MM/yyyy'),150,'FACE-10008',456567898);
+insert into factura(id_factura,id_cliente,id_vendedor,fecha,monto_total,serie,numero_factura) values (9,3,2,parsedatetime('28/01/2022','dd/MM/yyyy'),200,'FACE-10009',456567899);
+insert into factura(id_factura,id_cliente,id_vendedor,fecha,monto_total,serie,numero_factura) values (10,25,3,parsedatetime('28/01/2022','dd/MM/yyyy'),300,'FACE-10010',456567900);
+insert into factura(id_factura,id_cliente,id_vendedor,fecha,monto_total,serie,numero_factura) values (11,4,3,parsedatetime('28/01/2022','dd/MM/yyyy'),100,'FACE-10011',456567901);
+insert into factura(id_factura,id_cliente,id_vendedor,fecha,monto_total,serie,numero_factura) values (12,5,3,parsedatetime('28/01/2022','dd/MM/yyyy'),48.25,'FACE-10012',456567902);
+insert into factura(id_factura,id_cliente,id_vendedor,fecha,monto_total,serie,numero_factura) values (13,1,3,parsedatetime('05/02/2022','dd/MM/yyyy'),48.25,'FACE-10013',456567903);
+insert into factura(id_factura,id_cliente,id_vendedor,fecha,monto_total,serie,numero_factura) values (14,6,4,parsedatetime('05/02/2022','dd/MM/yyyy'),60.75,'FACE-10014',456567904);
+insert into factura(id_factura,id_cliente,id_vendedor,fecha,monto_total,serie,numero_factura) values (15,7,4,parsedatetime('05/02/2022','dd/MM/yyyy'),60.75,'FACE-10015',456567905);
+insert into factura(id_factura,id_cliente,id_vendedor,fecha,monto_total,serie,numero_factura) values (16,8,4,parsedatetime('10/02/2022','dd/MM/yyyy'),150,'FACE-10016',456567906);
+insert into factura(id_factura,id_cliente,id_vendedor,fecha,monto_total,serie,numero_factura) values (17,9,4,parsedatetime('10/02/2022','dd/MM/yyyy'),300,'FACE-10017',456567907);
+insert into factura(id_factura,id_cliente,id_vendedor,fecha,monto_total,serie,numero_factura) values (18,10,4,parsedatetime('10/02/2022','dd/MM/yyyy'),100,'FACE-10018',456567908);
+insert into factura(id_factura,id_cliente,id_vendedor,fecha,monto_total,serie,numero_factura) values (19,2,5,parsedatetime('11/02/2022','dd/MM/yyyy'),48.25,'FACE-10019',456567909);
+insert into factura(id_factura,id_cliente,id_vendedor,fecha,monto_total,serie,numero_factura) values (20,1,5,parsedatetime('11/02/2022','dd/MM/yyyy'),48.25,'FACE-10020',456567910);
+
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (1,1,1,1,1,3,12);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (2,1,2,1,2,4,14);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (3,1,3,1,3,5,100);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (4,2,4,1,1,5,12.1);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (5,2,5,2,2,1,400);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (6,2,6,2,3,4,30);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (7,3,7,2,1,5,15);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (8,3,8,2,2,5,5);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (9,3,9,3,3,4,40);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (10,4,10,3,1,5,50);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (11,4,11,3,2,5,40);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (12,4,12,3,3,3,25);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (13,5,13,4,1,4,20);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (14,5,14,4,2,5,10);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (15,5,15,4,3,5,20);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (16,6,16,4,1,1,22);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (17,6,17,5,2,4,17);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (18,6,18,5,3,5,12);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (19,6,19,5,4,5,20);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (20,7,20,5,1,4,15);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (21,7,1,1,2,5,12);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (22,8,2,1,1,5,14);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (23,9,3,1,1,1,100);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (24,9,4,1,2,7,12.1);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (25,10,5,2,1,1,400);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (26,10,6,2,2,9,30);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (27,11,1,1,1,3,12);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (28,11,2,1,2,4,14);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (29,11,3,1,3,5,100);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (30,12,4,1,1,5,12.1);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (31,12,5,2,2,1,400);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (32,12,6,2,3,4,30);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (33,13,7,2,1,5,15);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (34,13,8,2,2,5,5);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (35,13,9,3,3,4,40);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (36,14,10,3,1,5,50);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (37,14,11,3,2,5,40);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (38,14,12,3,3,3,25);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (39,15,13,4,1,4,20);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (40,15,14,4,2,5,10);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (41,15,15,4,3,5,20);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (42,16,16,4,1,1,22);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (43,16,17,5,2,4,17);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (44,16,18,5,3,5,12);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (45,16,19,5,4,5,20);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (46,17,20,5,1,4,15);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (47,17,1,1,2,5,12);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (48,18,2,1,1,5,14);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (49,19,3,1,1,1,100);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (50,19,4,1,2,7,12.1);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (51,20,5,2,1,1,400);
+insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (52,20,6,2,2,9,30);

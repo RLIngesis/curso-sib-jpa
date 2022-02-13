@@ -18,20 +18,23 @@ import lombok.Data;
 public class Producto implements Serializable {
 
 	@Id
+	@Column(name="id_producto")
 	private Integer idProducto;
 
 	@Id
+	@Column(name="id_categoria")
 	private Integer idCategoria;
 
-	@ManyToOne(fetch=FetchType.LAZY) 
+	@JoinColumn(name="id_categoria", referencedColumnName = "id_categoria",insertable = false, updatable = false)
+	@ManyToOne(fetch=FetchType.EAGER) 
 	private Categoria categoria;
 
-	@Column
+	@Column(name="codigo_producto")
 	private String codigoProducto;
 
-	@Column
+	@Column(name="descripcion")
 	private String descripcion;
 
-	@Column
+	@Column(name="unidad_medida")
 	private String unidadMedida;
 }
