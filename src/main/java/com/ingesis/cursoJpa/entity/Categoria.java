@@ -5,11 +5,13 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.Data;
 
 @Data
-@Entity(name="CATEGORIA")
+@Entity
+@Table(name="CATEGORIA")
 public class Categoria implements Serializable {
 
 	@Id

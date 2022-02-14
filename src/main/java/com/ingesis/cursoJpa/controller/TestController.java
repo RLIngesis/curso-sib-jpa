@@ -11,9 +11,4 @@ public class TestController {
 		return "prueba";
 	}
 	
-	@GetMapping("api/v1/clientes")
-	public String getClientes() {
-		
-		return "";
-	}
 }

@@ -5,11 +5,13 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import lombok.Data;
 
 @Data
-@Entity(name="INVENTARIO")
+@Entity
+@Table(name="INVENTARIO")
 public class Inventario implements Serializable {
 	
 	@EmbeddedId

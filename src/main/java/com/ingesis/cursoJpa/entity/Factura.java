@@ -10,11 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import lombok.Data;
 
 @Data
-@Entity(name="FACTURA")
+@Entity
+@Table(name="FACTURA")
 public class Factura implements Serializable{
 	@Id
 	@Column(name="id_factura")

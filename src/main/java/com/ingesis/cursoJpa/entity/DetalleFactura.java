@@ -5,11 +5,13 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import lombok.Data;
 
 @Data
-@Entity(name="DETALLE_FACTURA")
+@Entity
+@Table(name="DETALLE_FACTURA")
 public class DetalleFactura implements Serializable{
 
 	@EmbeddedId
