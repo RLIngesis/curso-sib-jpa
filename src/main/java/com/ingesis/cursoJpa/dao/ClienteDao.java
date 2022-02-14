@@ -27,4 +27,22 @@ public class ClienteDao {
 		
 		return listaClientes;
 	}
+	
+	public Cliente findClienteById(Integer idCliente){
+		List<Cliente> listaClientes;
+		Cliente cliente;
+		
+		Query q = em.createNamedQuery("Cliente.findById");
+			  q.setParameter("idCliente", idCliente);
+			  
+		listaClientes = q.getResultList();
+		
+		if(null == listaClientes || listaClientes.size() == 0) {
+			cliente = new Cliente();
+		}else {
+			cliente = listaClientes.get(0);
+		}
+		
+		return cliente;
+	}
 }

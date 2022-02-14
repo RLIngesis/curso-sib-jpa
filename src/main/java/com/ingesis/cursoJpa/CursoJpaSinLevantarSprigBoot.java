@@ -1,5 +1,8 @@
 package com.ingesis.cursoJpa;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.ingesis.cursoJpa.logic.ClienteLogic;
 import com.ingesis.cursoJpa.testContext.TestPersistenceContext;
 
 public class CursoJpaSinLevantarSprigBoot {
@@ -13,6 +16,4 @@ public class CursoJpaSinLevantarSprigBoot {
 		TestPersistenceContext testPersistenceContext = new TestPersistenceContext("jpa-pu");
 		testPersistenceContext.erroresDeIntegridad();
 	}
-
-	
 }

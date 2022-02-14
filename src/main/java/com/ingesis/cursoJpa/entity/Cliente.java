@@ -12,7 +12,8 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @NamedQueries({
-	@NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c")
+	@NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c"),
+	@NamedQuery(name = "Cliente.findById", query = "SELECT c FROM Cliente c WHERE c.idCliente =:idCliente")
 })
 @Entity
 @Table(name="CLIENTE")
