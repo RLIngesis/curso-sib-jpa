@@ -4,9 +4,9 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
              
   <persistence-unit name="jpa-pu" transaction-type="RESOURCE_LOCAL">
-        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-        <exclude-unlisted-classes>false</exclude-unlisted-classes>
-        
+     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+     <exclude-unlisted-classes>false</exclude-unlisted-classes>
+
      <properties>
         <property name="javax.persistence.jdbc.url" 
                   value="jdbc:h2:mem:sales"/>            
@@ -26,7 +26,7 @@
     			  value="META-INF/sql/data.sql"/>   
         <property name="eclipselink.logging.level"
                   value="FINE" />                
-     </properties>                
+     </properties>        
    </persistence-unit>
 
 </persistence>

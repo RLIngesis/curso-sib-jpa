@@ -10,11 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 import lombok.Data;
 
 @Data
-@Entity(name="VENDEDOR")
+@Entity
+@Table(name="VENDEDOR")
 public class Vendedor implements Serializable {
 
 	@Id
