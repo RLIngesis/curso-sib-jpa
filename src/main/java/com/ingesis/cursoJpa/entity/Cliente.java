@@ -18,9 +18,7 @@ import lombok.Data;
 @NamedQueries({
 	@NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c"),
 	@NamedQuery(name = "Cliente.findById", query = "SELECT c FROM Cliente c WHERE c.idCliente =:idCliente"),
-	@NamedQuery(name = "Cliente.findByNombreAndNit", query = "SELECT c FROM Cliente c WHERE c.nombre =:nombre and c.nit =:nit"),
-	@NamedQuery(name = "Cliente.findByPais", query = "SELECT c FROM Cliente c WHERE c.municipio.departamento.pais.idPais=:idPais"),
-	@NamedQuery(name = "Cliente.findByDepartamento", query = "SELECT c FROM Cliente c WHERE c.municipio.departamento.idDepartamento =:idDepartamento")
+	@NamedQuery(name = "Cliente.findByNombreAndNit", query = "SELECT c FROM Cliente c WHERE c.nombre =:nombre and c.nit =:nit")
 	
 })
 @Entity
@@ -47,11 +45,7 @@ public class Cliente implements Serializable {
     
     @Column(nullable = false)
     private String email;
-    
-    @JoinColumn(name = "id_municipio", nullable=false)
-	@ManyToOne 
-	private Municipio municipio;
-	
+ 
 
 	@Override
 	public boolean equals(Object obj) {

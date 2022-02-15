@@ -42,14 +42,4 @@ public class ClienteService {
 		return clienteDao.findClienteByNameAndNit(nombre, nit);
 	}
 	
-	@Transactional(readOnly = true)
-	public List<Cliente> findAllByPais(Integer idPais){
-		return clienteDao.findAllByPais(idPais);
-	}
-	
-	@Transactional(readOnly = true)
-	public List<Cliente> findAllByDepartamento(Integer idDepartamento) {
-		return clienteDao.findAllByDepartamento(idDepartamento);
-	}
-	
 }
