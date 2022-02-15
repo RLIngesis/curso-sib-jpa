@@ -5,6 +5,7 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,9 +16,7 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Data
-@NamedQueries({
-	@NamedQuery(name = "Municipio.findAllByPais", query = "SELECT m FROM Municipio m WHERE m.departamento.pais.idPais=:idPais"),
-})
+
 @Entity
 @Table(name="MUNICIPIO")
 public class Municipio implements Serializable{
@@ -32,7 +31,7 @@ public class Municipio implements Serializable{
 	@Column(nullable = false)
 	private String nombre;
 	
-	@JoinColumn(name = "id_departamento", nullable=false)
+	@JoinColumn(name = "id_departamento", referencedColumnName ="id_departamento")
 	@ManyToOne 
 	private Departamento departamento;
 	

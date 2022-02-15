@@ -33,8 +33,8 @@ public class Departamento implements Serializable {
 	@ManyToOne 
 	private Pais pais;
 	
-	@JoinColumn(name = "id_departamento", referencedColumnName = "id_departamento", insertable = false, updatable = false)
-	@OneToMany(fetch=FetchType.LAZY) 
+	
+	@OneToMany(mappedBy="departamento",fetch=FetchType.LAZY) 
 	private List<Municipio> municipios;
 	
 	@Override

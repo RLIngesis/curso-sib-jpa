@@ -5,6 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import com.ingesis.cursoJpa.entity.Cliente;
+import com.ingesis.cursoJpa.entity.Municipio;
 
 public class TestPersistenceContext {
 	
@@ -49,8 +50,6 @@ public class TestPersistenceContext {
         juana.setTelefono("(502) 8675969");
         
         em.getTransaction().begin();
-        em.getTransaction().rollback();
-                
         em.close();
     }
     
@@ -58,7 +57,6 @@ public class TestPersistenceContext {
         EntityManager em = emf.createEntityManager();
         
         Cliente juana = em.find(Cliente.class,1);
-        System.out.println("Juana: "+juana.getTelefono());
         juana.setTelefono("(502) 8675969");
         
         em.flush();            
@@ -127,5 +125,15 @@ public class TestPersistenceContext {
         em.close();    	
     	
     }    
+
+    public void probarLazyAndEagerLoading() {
+        EntityManager em = emf.createEntityManager();
+        
+        em.getTransaction().begin();
+        Municipio muni = em.find(Municipio.class, 1);
+        em.close();    	
+    	
+    }    
+    
     
 }
