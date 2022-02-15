@@ -7,7 +7,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.ingesis.cursoJpa.dto.ClienteDto;
 import com.ingesis.cursoJpa.entity.Cliente;
 import com.ingesis.cursoJpa.service.ClienteService;
 
@@ -79,6 +81,48 @@ public class ClienteLogic {
 		cliente.setNit("nit");
 		cliente.setTelefono("0920302");
 		return cliente;
+	}
+	
+	public ClienteDto findClienteByReference(Integer idCliente){
+		Cliente cliente = clienteService.findClienteByReference(idCliente);
+		return mapToDto(cliente);
+	}
+	
+	public List<ClienteDto> findAllClientes(){
+		List<Cliente> clientes =  clienteService.findAllClientes();
+		List<ClienteDto> clientesDto = new ArrayList<>();
+		if(null != clientes && clientes.size()>0) {
+			for(Cliente cliente: clientes) {
+				clientesDto.add(mapToDto(cliente));
+			}
+		}
+		return clientesDto;
+	}
+	
+
+	public ClienteDto findClienteById(Integer idCliente){
+		Cliente cliente =  clienteService.findClienteById(idCliente);
+		return mapToDto(cliente);
+	}
+	
+	public ClienteDto findClienteByNombreAndNit(String nombre, String nit){
+		Cliente cliente =  clienteService.findClienteByNombreAndNit(nombre, nit);
+		return mapToDto(cliente);
+	}
+	
+	public ClienteDto mapToDto(Cliente cliente) {
+		ClienteDto clienteDto = new ClienteDto();
+		if(cliente != null) {
+			clienteDto.setNombre(cliente.getNombre());
+			clienteDto.setDireccion(cliente.getDireccion());
+			clienteDto.setEmail(cliente.getEmail());
+			clienteDto.setNit(cliente.getNit());
+			clienteDto.setTelefono(cliente.getTelefono());
+			if(null!=cliente.getMunicipio()) {
+				clienteDto.setMunicipio(cliente.getMunicipio().getNombre());
+			}
+		}
+		return clienteDto;
 	}
 	
 }

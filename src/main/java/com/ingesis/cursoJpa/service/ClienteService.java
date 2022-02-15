@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ingesis.cursoJpa.dao.ClienteDao;
+import com.ingesis.cursoJpa.dto.ClienteDto;
 import com.ingesis.cursoJpa.entity.Categoria;
 import com.ingesis.cursoJpa.entity.Cliente;
 
@@ -34,7 +35,8 @@ public class ClienteService {
 	
 	@Transactional(readOnly = true)
 	public Cliente findClienteByReference(Integer idCliente){
-		return clienteDao.findClienteByReference(idCliente);
+		Cliente cliente = clienteDao.findClienteByReference(idCliente);
+		return cliente;
 	}
 	
 	@Transactional(readOnly = true)
