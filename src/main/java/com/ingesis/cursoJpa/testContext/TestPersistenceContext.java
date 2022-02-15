@@ -22,7 +22,6 @@ public class TestPersistenceContext {
         em.getTransaction().begin();
         
         Cliente juana = em.find(Cliente.class,1);
-        System.out.println("Juana: "+juana.getTelefono());
         juana.setTelefono("(502) 8675969");
         
         em.getTransaction().commit();
@@ -46,10 +45,10 @@ public class TestPersistenceContext {
         EntityManager em = emf.createEntityManager();
    
         Cliente juana = em.find(Cliente.class,1);
-        System.out.println("Juana: "+juana.getTelefono());
         juana.setTelefono("(502) 8675969");
         
         em.getTransaction().begin();
+        em.getTransaction().commit();
         em.close();
     }
     

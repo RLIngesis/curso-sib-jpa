@@ -20,6 +20,9 @@ public class CursoJpaSinLevantarSprigBoot {
 //		testPersistenceContext.probandoEstadoManagedSinTranaccion();
 //		testPersistenceContext.probandoEstadoManagedTranaccionPosterior();
 //		testPersistenceContext.probandoFlushExplicitoSinTransaccion();
+//		testPersistenceContext.ordenEjecucionOperacionesSQLEnElFlush();
+//		testPersistenceContext.flushAnteriorAQueries();
+//		testPersistenceContext.erroresDeIntegridad();
 
 		
 	}
