@@ -31,4 +31,15 @@ public class ClienteService {
 	public Cliente findClienteById(Integer idCliente){
 		return clienteDao.findClienteById(idCliente);
 	}
+	
+	@Transactional(readOnly = true)
+	public List<Cliente> findAllByPais(Integer idPais){
+		return clienteDao.findAllByPais(idPais);
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Cliente> findAllByDepartamento(Integer idDepartamento) {
+		return clienteDao.findAllByDepartamento(idDepartamento);
+	}
+	
 }

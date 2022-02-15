@@ -45,4 +45,16 @@ public class ClienteDao {
 		
 		return cliente;
 	}
+	
+	public List<Cliente> findAllByPais(Integer idPais){
+		Query q = this.em.createNamedQuery("Cliente.findByPais")
+				.setParameter("idPais", idPais);
+		return q.getResultList();
+	}
+	
+	public List<Cliente> findAllByDepartamento(Integer idDepartamento) {
+		Query q = this.em.createNamedQuery("Cliente.findByDepartamento")
+				.setParameter("idDepartamento", idDepartamento);
+		return q.getResultList();
+	}
 }

@@ -6,6 +6,8 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -15,13 +17,18 @@ import lombok.Data;
 @Data
 @NamedQueries({
 	@NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c"),
-	@NamedQuery(name = "Cliente.findById", query = "SELECT c FROM Cliente c WHERE c.idCliente =:idCliente")
+	@NamedQuery(name = "Cliente.findById", query = "SELECT c FROM Cliente c WHERE c.idCliente =:idCliente"),
+	@NamedQuery(name = "Cliente.findByPais", query = "SELECT c FROM Cliente c WHERE c.municipio.departamento.pais.idPais=:idPais"),
+	@NamedQuery(name = "Cliente.findByDepartamento", query = "SELECT c FROM Cliente c WHERE c.municipio.departamento.idDepartamento =:idDepartamento")
+	
 })
 @Entity
 @Table(name="CLIENTE")
 public class Cliente implements Serializable {
 
-    @Id
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @Column(name="id_cliente")
     private Integer idCliente;
     
@@ -39,6 +46,11 @@ public class Cliente implements Serializable {
     
     @Column(nullable = false)
     private String email;
+    
+    @JoinColumn(name = "id_municipio", nullable=false)
+	@ManyToOne 
+	private Municipio municipio;
+	
 
 	@Override
 	public int hashCode() {
