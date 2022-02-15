@@ -31,4 +31,16 @@ public class ClienteService {
 	public Cliente findClienteById(Integer idCliente){
 		return clienteDao.findClienteById(idCliente);
 	}
+	
+	@Transactional(readOnly = true)
+	public Cliente findClienteByReference(Integer idCliente){
+		return clienteDao.findClienteByReference(idCliente);
+	}
+	
+	@Transactional(readOnly = true)
+	public Cliente findClienteByNombreAndNit(String nombre, String nit){
+		return clienteDao.findClienteByNameAndNit(nombre, nit);
+	}
+	
+
 }

@@ -45,4 +45,30 @@ public class ClienteDao {
 		
 		return cliente;
 	}
+	
+	public Cliente findClienteByReference(Integer idCliente) {
+		Cliente cliente = em.getReference(Cliente.class, idCliente);
+		return cliente;
+	}
+	
+	public Cliente findClienteByNameAndNit(String nombre, String nit){
+		List<Cliente> listaClientes;
+		Cliente cliente;
+		
+		Query q = em.createNamedQuery("Cliente.findByNombreAndNit");
+			  q.setParameter("nombre", nombre);
+			  q.setParameter("nit", nit);
+			  
+		listaClientes = q.getResultList();
+		
+		if(null == listaClientes || listaClientes.size() == 0) {
+			cliente = new Cliente();
+		}else {
+			cliente = listaClientes.get(0);
+		}
+		
+		return cliente;
+	}
+		
+
 }

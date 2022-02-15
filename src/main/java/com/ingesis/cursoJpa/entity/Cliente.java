@@ -15,7 +15,8 @@ import lombok.Data;
 @Data
 @NamedQueries({
 	@NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c"),
-	@NamedQuery(name = "Cliente.findById", query = "SELECT c FROM Cliente c WHERE c.idCliente =:idCliente")
+	@NamedQuery(name = "Cliente.findById", query = "SELECT c FROM Cliente c WHERE c.idCliente =:idCliente"),
+	@NamedQuery(name = "Cliente.findByNombreAndNit", query = "SELECT c FROM Cliente c WHERE c.nombre =:nombre and c.nit =:nit"),
 })
 @Entity
 @Table(name="CLIENTE")
@@ -41,21 +42,20 @@ public class Cliente implements Serializable {
     private String email;
 
 	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof Cliente))
+			return false;
+		Cliente other = (Cliente) obj;
+		return Objects.equals(idCliente, other.getIdCliente());
+	}
+
+	@Override
 	public int hashCode() {
 		return Objects.hash(idCliente);
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Cliente other = (Cliente) obj;
-		return Objects.equals(idCliente, other.idCliente);
-	}
 
     
      

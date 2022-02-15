@@ -12,10 +12,34 @@ public class ClienteLogic {
 	@Autowired
 	private ClienteService clienteService;
 
-	public void clienteEqualsExample() {
-		Cliente cliente1 = clienteService.findClienteById(1);
-		Cliente cliente2 = new Cliente();
-		cliente2.setIdCliente(1);
-		System.out.println("Comparacion de clientes por PK: "+ cliente1.equals(cliente2));
+	public String clienteEqualsExample() {
+		Cliente clienteBD = clienteService.findClienteById(1);
+		Cliente clienteObj = new Cliente();
+		clienteObj.setIdCliente(1);
+		String salida = "";
+		salida += "ClienteBD equals clienteJava? "+clienteBD.equals(clienteObj)+" -- ";
+		salida += "ClienteJava equals clienteBD? "+clienteObj.equals(clienteBD);
+		return salida;
 	}
+	
+	public String clienteEqualsExampleByRef() {
+		Cliente clienteBD = clienteService.findClienteByReference(1);
+		Cliente clienteObj = new Cliente();
+		clienteObj.setIdCliente(1);
+		String salida = "";
+		salida += "ClienteBD equals clienteJava? "+clienteBD.equals(clienteObj)+" -- ";
+		salida += "ClienteJava equals clienteBD? "+clienteObj.equals(clienteBD);
+		return salida;
+	}
+	
+	public void ejemploHashMap() {
+		Cliente clienteObj1 = new Cliente();
+		Cliente clienteObj2 = new Cliente();
+		Cliente clienteObj3 = new Cliente();
+		clienteObj1.setNombre("Pedro");
+		clienteObj1.setNombre("Mateo");
+		clienteObj1.setNombre("Gonzales");
+	}
+	
+	
 }

@@ -25,13 +25,27 @@ public class ClienteController {
 	}
 	
 	@GetMapping("api/v1/cliente")
-	public Cliente getClientes(Integer idCliente) {
+	public Cliente getCliente(Integer idCliente) {
 		return clienteService.findClienteById(idCliente);
 	}
 	
-	@GetMapping("api/v1/equalsExample")
+	@GetMapping("api/v1/clienteRef")
+	public Cliente getClienteByRef(Integer idCliente) {
+		return clienteService.findClienteByReference(idCliente);
+	}
+	
+	@GetMapping("api/v1/clienteByNombreAndNit")
+	public Cliente getClienteByNombreAndNit(String nombre, String nit) {
+		return clienteService.findClienteByNombreAndNit(nombre,nit);
+	}
+	
+	@GetMapping("api/v1/equalsExample1")
 	public String equalsExample() {
-		clienteLogic.clienteEqualsExample();
-		return "Fin equalsExample method";
+		return clienteLogic.clienteEqualsExample();
+	}
+	
+	@GetMapping("api/v1/equalsExample2")
+	public String equalsExample2() {
+		return clienteLogic.clienteEqualsExampleByRef();
 	}
 }
