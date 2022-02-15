@@ -15,7 +15,7 @@ import lombok.Data;
 public class Inventario implements Serializable {
 	
 	@EmbeddedId
-	private InventarioId inventarioId;
+	private InventarioPK inventarioId;
 	
 	@Column(name="cantidad", nullable = false)
 	private Integer cantidad;

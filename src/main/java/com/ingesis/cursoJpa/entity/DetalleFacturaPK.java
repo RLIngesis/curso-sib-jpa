@@ -11,7 +11,7 @@ import lombok.Data;
 
 @Data
 @Embeddable
-public class DetalleFacturaId implements Serializable {
+public class DetalleFacturaPK implements Serializable {
 
 	@Basic(optional = false)
 	@Column(name="id_detalle_factura")

@@ -21,7 +21,8 @@ public class DepartamentoService {
 		this.departamentoDao = departamentoDao;
 	}
 	
-	public List<Municipio> findMunicipiosByDepartamento(Integer idDepartamento) {
-		return departamentoDao.findMunicipiosByDepartamento(idDepartamento);
-	}
+	/*
+	 * public List<Municipio> findMunicipiosByDepartamento(Integer idDepartamento) {
+	 * return departamentoDao.findMunicipiosByDepartamento(idDepartamento); }
+	 */
 }

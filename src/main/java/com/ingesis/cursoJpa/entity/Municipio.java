@@ -16,7 +16,9 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Data
-
+@NamedQueries({
+	@NamedQuery(name = "Municipio.findAllByPais", query = "SELECT m FROM Municipio m WHERE m.departamento.pais.idPais=:idPais"),
+})
 @Entity
 @Table(name="MUNICIPIO")
 public class Municipio implements Serializable{

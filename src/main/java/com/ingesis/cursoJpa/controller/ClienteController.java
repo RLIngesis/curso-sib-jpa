@@ -48,4 +48,14 @@ public class ClienteController {
 	public String equalsExample2() {
 		return clienteLogic.clienteEqualsExampleByRef();
 	}
+	
+	@GetMapping("api/v1/listaHash")
+	public void listaHash() {
+		 clienteLogic.ejemploHashMap();
+	}
+	
+	@GetMapping("api/v1/listaArray")
+	public void listaArray() {
+		 clienteLogic.ejemploLista();
+	}
 }

@@ -9,13 +9,17 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import lombok.Data;
-
+@NamedQueries({
+	@NamedQuery(name="findByIdCategoria", query="SELECT p FROM Producto p WHERE p.idCategoria=:idCategoria")
+})
 @Data
 @Entity
-@IdClass(ProductId.class)
+@IdClass(ProductoPK.class)
 @Table(name="PRODUCTO")
 public class Producto implements Serializable {
 

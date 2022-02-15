@@ -1,6 +1,7 @@
 package com.ingesis.cursoJpa.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -9,11 +10,16 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
 
+@NamedQueries({
+	@NamedQuery(name="getFacturaById", query="SELECT f FROM Factura f WHERE f.idFactura =:idFacturaParam")
+})
 @Data
 @Entity
 @Table(name="FACTURA")
@@ -28,24 +34,28 @@ public class Factura implements Serializable{
 	@Column(name="serie")
 	private String serie;
 	
-	@JoinColumn(name = "id_cliente")
-	@ManyToOne 
+	@Column(name = "id_cliente")
+	private Integer idCliente;
+	
+	@Column(name = "id_vendedor", insertable = false, updatable = false)
+	private Integer idVendedor;
+	
+	@JoinColumn(name = "id_cliente", referencedColumnName="id_cliente", insertable = false, updatable = false)
+	@ManyToOne (fetch = FetchType.LAZY) 
 	private Cliente cliente;
 	 
-	//@JoinColumn(name = "id_vendedor", referencedColumnName = "id_vendedor",
-	//		    table="vendedor")
-	//@ManyToOne 
-	//private Vendedor Vendedor; 
+	@JoinColumn(name = "id_vendedor", referencedColumnName = "id_vendedor")
+	@ManyToOne(fetch = FetchType.EAGER) 
+	private Vendedor Vendedor; 
 	 
 	@Column(name="fecha")
-	private Data fecha;
+	private Date fecha;
 	
 	@Column(name="monto_total")
 	private Double montoTotal;
-
-	@JoinColumn(name = "idFactura", referencedColumnName = "idFactura", insertable = false, updatable = false)
-	@OneToMany(fetch=FetchType.LAZY) 
-	private List<DetalleFactura> detalleFactura;
-	 
 	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "factura") 
+	private List<DetalleFactura> detalleFactura;
+	
+
 }
