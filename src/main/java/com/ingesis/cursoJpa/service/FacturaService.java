@@ -1,5 +1,7 @@
 package com.ingesis.cursoJpa.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -18,5 +20,15 @@ public class FacturaService {
 	@Transactional(readOnly=true)
 	public Factura getFacturaById(Integer idFactura) {
 		return facturaDao.getFacturaById(idFactura);
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Factura> getFacturasByCriteria(String nombreCliente, String telefono, String nit){
+		return facturaDao.getFacturasByCriteria(nombreCliente, telefono, nit);
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Factura> getFacturasBySinCriteria(String nombreCliente, String telefono){
+		return facturaDao.getFacturasBySinCriteria(nombreCliente, telefono);
 	}
 }

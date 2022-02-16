@@ -29,6 +29,11 @@ public class ClienteService {
 	}
 	
 	@Transactional(readOnly = true)
+	public List<Cliente> findAllClientesCriteria(){
+		return clienteDao.findAllClientesCriteria();
+	}
+	
+	@Transactional(readOnly = true)
 	public Cliente findClienteById(Integer idCliente){
 		return clienteDao.findClienteById(idCliente);
 	}

@@ -99,6 +99,17 @@ public class ClienteLogic {
 		return clientesDto;
 	}
 	
+	public List<ClienteDto> findAllClientesCriteria(){
+		List<Cliente> clientes =  clienteService.findAllClientesCriteria();
+		List<ClienteDto> clientesDto = new ArrayList<>();
+		if(null != clientes && clientes.size()>0) {
+			for(Cliente cliente: clientes) {
+				clientesDto.add(mapToDto(cliente));
+			}
+		}
+		return clientesDto;
+	}
+	
 
 	public ClienteDto findClienteById(Integer idCliente){
 		Cliente cliente =  clienteService.findClienteById(idCliente);

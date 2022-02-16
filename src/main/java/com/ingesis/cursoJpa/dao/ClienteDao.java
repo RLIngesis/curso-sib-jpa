@@ -6,10 +6,17 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Expression;
+import javax.persistence.criteria.Root;
+
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import com.ingesis.cursoJpa.entity.Cliente;
+import com.ingesis.cursoJpa.entity.Factura;
 
 @Repository
 public class ClienteDao {
@@ -28,6 +35,22 @@ public class ClienteDao {
 		}
 		
 		return listaClientes;
+	}
+	
+	
+	public List<Cliente> findAllClientesCriteria(){
+		CriteriaBuilder cb = this.em.getCriteriaBuilder();
+		CriteriaQuery<Cliente> cq = cb.createQuery(Cliente.class);
+		
+		Root<Cliente> emi = cq.from(Cliente.class);
+		
+		CriteriaQuery<Cliente> select = cq.select(emi);
+
+		
+		TypedQuery<Cliente> q = this.em.createQuery(select);
+		List<Cliente> listaFactuaras = q.getResultList();
+		
+		return listaFactuaras;
 	}
 	
 	public Cliente findClienteById(Integer idCliente){

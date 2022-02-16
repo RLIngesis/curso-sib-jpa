@@ -25,6 +25,11 @@ public class ClienteController {
 		return clienteLogic.findAllClientes();
 	}
 	
+	@GetMapping("api/v1/clientes/criteria")
+	public List<ClienteDto> getClientesCriteria() {
+		return clienteLogic.findAllClientesCriteria();
+	}
+	
 	@GetMapping("api/v1/cliente")
 	public ClienteDto getCliente(Integer idCliente) {
 		return clienteLogic.findClienteById(idCliente);
