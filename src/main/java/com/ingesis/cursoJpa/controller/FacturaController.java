@@ -46,8 +46,7 @@ public class FacturaController {
 	
 	@GetMapping("api/v1/facturaSinCriteria")
 	public List<FacturaDto> getFullFacturaSinCriteria(@RequestParam(value="nombre", required = false) String nombre,
-			@RequestParam(value="telefono", required=false) String telefono,
-			@RequestParam(value="nit", required=false) String nit) {
-		return facturaLogic.getFullFacturaSinCriteria(nombre, telefono, nit);
+			@RequestParam(value="telefono", required=false) String telefono) {
+		return facturaLogic.getFullFacturaSinCriteria(nombre, telefono);
 	}
 }

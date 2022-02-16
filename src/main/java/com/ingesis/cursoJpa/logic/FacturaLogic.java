@@ -68,8 +68,8 @@ public class FacturaLogic {
 		return facturaFull;
 	}
 	
-	public List<FacturaDto> getFullFacturaSinCriteria(String nombre, String telefono, String nit) {
-		List<Factura> factura = facturaService.getFacturasBySinCriteria(nombre, telefono, nit);
+	public List<FacturaDto> getFullFacturaSinCriteria(String nombre, String telefono) {
+		List<Factura> factura = facturaService.getFacturasBySinCriteria(nombre, telefono);
 		
 		return factura.stream()
 				.map(element-> convertFacturaDto(element))
