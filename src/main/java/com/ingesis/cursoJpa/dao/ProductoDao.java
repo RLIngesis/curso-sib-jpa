@@ -27,4 +27,13 @@ public class ProductoDao {
 
 		return productos;
 	}
+	
+	public Producto buscarPorId(Integer idProducto){
+		return em.find(Producto.class, idProducto);
+	}
+	
+	public Producto crear(Producto producto) {
+		em.persist(producto);
+		return producto;
+	}
 }

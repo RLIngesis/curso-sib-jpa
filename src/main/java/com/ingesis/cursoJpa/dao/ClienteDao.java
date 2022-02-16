@@ -83,4 +83,9 @@ public class ClienteDao {
 				.setParameter("idDepartamento", idDepartamento);
 		return q.getResultList();
 	}
+	
+	public Cliente crea(Cliente cliente) {
+		em.persist(cliente);
+		return cliente;
+	}
 }
