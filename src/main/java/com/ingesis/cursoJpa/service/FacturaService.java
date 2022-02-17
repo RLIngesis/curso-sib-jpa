@@ -10,7 +10,7 @@ import com.ingesis.cursoJpa.dao.FacturaDao;
 import com.ingesis.cursoJpa.entity.Factura;
 
 @Service
-@Transactional(propagation = Propagation.REQUIRES_NEW)
+@Transactional
 public class FacturaService {
 	
 	@Autowired

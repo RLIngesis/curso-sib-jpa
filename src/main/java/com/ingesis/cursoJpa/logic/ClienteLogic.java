@@ -7,17 +7,20 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.ingesis.cursoJpa.dto.ClienteDto;
 import com.ingesis.cursoJpa.entity.Cliente;
 import com.ingesis.cursoJpa.service.ClienteService;
+import com.ingesis.cursoJpa.service.ServicioAuditoria;
 
 @Component
 public class ClienteLogic {
 	
 	@Autowired
 	private ClienteService clienteService;
+	
+	@Autowired
+	private ServicioAuditoria auditoriaService;
 
 	public String clienteEqualsExample() {
 		Cliente clienteBD = clienteService.findClienteById(1);
@@ -125,4 +128,9 @@ public class ClienteLogic {
 		return clienteDto;
 	}
 	
+	public void crear (Cliente cliente) {
+		//auditoriaService.log("Creando a: "+cliente.getNombre());
+		clienteService.crear(cliente);
+		//auditoriaService.log("Se creo a: "+cliente.getNombre());
+	}
 }

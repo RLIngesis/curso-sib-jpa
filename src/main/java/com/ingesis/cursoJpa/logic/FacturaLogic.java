@@ -18,6 +18,7 @@ public class FacturaLogic {
 	
 	@Autowired
 	private InventarioService inventarioService;
+	
 
 	public FacturaDto getBasicFactura(Integer idFactura) {
 		Factura factura = facturaService.getFacturaById(idFactura);

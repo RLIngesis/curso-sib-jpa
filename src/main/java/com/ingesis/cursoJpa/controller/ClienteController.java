@@ -3,6 +3,7 @@ package com.ingesis.cursoJpa.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StopWatch;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -59,4 +60,29 @@ public class ClienteController {
 	public void listaArray() {
 		 clienteLogic.ejemploLista();
 	}
+	
+	@GetMapping("api/v1/clientes/crear")
+	public void crear(Integer idCliente, String nombre, String nit) {
+		 Cliente cliente = new Cliente();
+		 cliente.setIdCliente(idCliente);
+		 cliente.setNombre(nombre);
+		 cliente.setNit(nit);
+		 
+		 clienteLogic.crear(cliente);
+	}
+	
+	@GetMapping("api/v1/clientes/rendimiento")
+	public Integer problemaRendimiento() {
+		clienteService.llenarDataTestRendimiento();
+		
+		StopWatch sp = new StopWatch();
+		sp.start("consulta");
+		int nombre = clienteService.problemaDeRendimiento().size();
+		sp.stop();
+		System.out.println(sp.prettyPrint());
+		return nombre;
+		
+	}
+	
+	
 }

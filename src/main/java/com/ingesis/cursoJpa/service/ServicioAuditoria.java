@@ -13,6 +13,7 @@ import com.ingesis.cursoJpa.entity.Auditoria;
 import com.ingesis.cursoJpa.entity.Cliente;
 
 @Service
+@Transactional(propagation =Propagation.REQUIRES_NEW)
 public class ServicioAuditoria {
 	
 	@PersistenceContext
@@ -30,10 +31,11 @@ public class ServicioAuditoria {
 	public void log (Cliente cliente) {
 		
 		Auditoria auditoria = new Auditoria();
-		String mensaje = String.format("Consulta num %d a %s", cliente.getNombre());
+		String mensaje = String.format("Consulta num %d a %s",  cliente.getConsultas(),cliente.getNombre());
 		auditoria.setEvent(mensaje);
 
-		//persona.setConsultas(persona.getConsultas()+1);
+		cliente.setConsultas((cliente.getConsultas()==null?1:cliente.getConsultas()+1));
+		
 		em.persist(auditoria);
 	}
 

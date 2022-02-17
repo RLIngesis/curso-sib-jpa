@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
@@ -15,7 +17,10 @@ import com.ingesis.cursoJpa.entity.Cliente;
 public class ClienteDao {
 
 	@PersistenceContext
-	EntityManager em;
+	private EntityManager em;
+	
+	private static final int MILES = 150;
+	
 	
 	public void crear(Cliente cliente) {
 		em.persist(cliente);
@@ -87,8 +92,40 @@ public class ClienteDao {
 		return q.getResultList();
 	}
 	
-	public Cliente crea(Cliente cliente) {
+	public void crea(Cliente cliente) {
 		em.persist(cliente);
-		return cliente;
+	}
+	
+	   
+	public void llenarDataTestRendimiento() {
+		
+		System.out.println("---- inicializando BBDD ----");
+		int idCliente = 1000;
+		for (int i = 0; i < MILES * 1000; i++) {
+			idCliente++;
+		   Cliente persona = new Cliente();
+		   persona.setIdCliente(idCliente);
+	       persona.setNombre("persona " + i);
+	       
+		   em.persist(persona);
+		}
+		
+		System.out.println("---- incialización completada -----");
+	}
+	
+	public List<Cliente> consultaTodoLosClientes() {
+		List<Cliente> resultado = new ArrayList<Cliente>(MILES * 1000);
+		
+		TypedQuery<Cliente> query = em.createQuery("select p from Cliente p where p.idCliente >= :inicio and  p.idCliente <= :fin", Cliente.class);
+		
+		for (int i = 0; i < MILES; i++) {
+			query.setParameter("inicio",  (i * 1000L) + 1  );
+			query.setParameter("fin", (i + 1) * 1000L);
+			
+			resultado.addAll(query.getResultList());
+			//em.clear();
+		}
+		
+		return resultado;
 	}
 }
