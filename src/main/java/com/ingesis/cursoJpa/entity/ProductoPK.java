@@ -15,4 +15,11 @@ public class ProductoPK implements Serializable {
 	
 	@Column(name="id_categoria")
 	private Integer idCategoria;
+
+	public ProductoPK(Integer idProducto, Integer idCategoria) {
+		super();
+		this.idProducto = idProducto;
+		this.idCategoria = idCategoria;
+	}
+	
 }

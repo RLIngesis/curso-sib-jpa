@@ -4,17 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ingesis.cursoJpa.dao.ClienteDao;
 import com.ingesis.cursoJpa.dao.ProductoDao;
-import com.ingesis.cursoJpa.entity.Categoria;
-import com.ingesis.cursoJpa.entity.Cliente;
 import com.ingesis.cursoJpa.entity.Producto;
+import com.ingesis.cursoJpa.entity.ProductoPK;
 
 @Service
-@Transactional(propagation = Propagation.REQUIRES_NEW)
+@Transactional
 public class ProductoService {
 	
 	private ProductoDao productoDao;
@@ -30,8 +27,8 @@ public class ProductoService {
 	}
 
 	@Transactional(readOnly = true)
-	public Producto buscarPorId(Integer idProducto){
-		return productoDao.buscarPorId(idProducto);
+	public Producto buscarPorId(ProductoPK productoPk){
+		return productoDao.buscarPorId(productoPk);
 	}
 
 	public Producto crear(Producto producto) {

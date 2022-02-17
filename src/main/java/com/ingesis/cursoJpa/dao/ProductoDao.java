@@ -10,6 +10,7 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 
 import com.ingesis.cursoJpa.entity.Producto;
+import com.ingesis.cursoJpa.entity.ProductoPK;
 
 @Repository
 public class ProductoDao {
@@ -28,8 +29,8 @@ public class ProductoDao {
 		return productos;
 	}
 	
-	public Producto buscarPorId(Integer idProducto){
-		return em.find(Producto.class, idProducto);
+	public Producto buscarPorId(ProductoPK productoPK){
+		return em.find(Producto.class, productoPK);
 	}
 	
 	public Producto crear(Producto producto) {

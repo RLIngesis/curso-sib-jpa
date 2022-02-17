@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ingesis.cursoJpa.dto.ProductoDto;
@@ -27,21 +29,14 @@ public class ProductoController {
 	}
 	
 	@GetMapping("api/v1/producto/buscarPorIdProducto")
-	public ProductoDto bucarPorIdProducto(Integer idProducto) {
-		return productoLogic.buscarPorId(idProducto);
+	public ProductoDto bucarPorIdProducto(Integer idProducto, Integer idCategoria) {
+		return productoLogic.buscarPorId(idProducto,idCategoria);
 	}
 	
 	
-	@GetMapping("api/v1/producto/crear")
-	public ProductoDto crear(String codigo, String descripcion, Integer categoria,String unidadMedida) {
-		ProductoDto productoDto = new ProductoDto();
-		
-		productoDto.setCodigoProducto(codigo);
-		productoDto.setDescripcion(descripcion);
-		productoDto.setIdCategoria(categoria);
-		productoDto.setUnidadMedida(unidadMedida);
-			
-		return productoLogic.crear(productoDto);
+	@PostMapping("api/v1/producto/crear")
+	public ProductoDto crear(@RequestBody ProductoDto producto) {
+		return productoLogic.crear(producto);
 	}
 	
 }

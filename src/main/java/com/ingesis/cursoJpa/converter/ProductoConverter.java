@@ -10,6 +10,7 @@ public class ProductoConverter extends AbstractConverter<Producto, ProductoDto> 
 	public Producto toEntity(ProductoDto dto) {
 		Producto producto = new Producto();
 		producto.setIdProducto(dto.getIdProducto());
+		producto.setCodigoProducto(dto.getCodigoProducto());
 		producto.setIdCategoria(dto.getIdCategoria());
 		producto.setDescripcion(dto.getDescripcion());
 		producto.setUnidadMedida(dto.getUnidadMedida());
@@ -24,6 +25,7 @@ public class ProductoConverter extends AbstractConverter<Producto, ProductoDto> 
 		productoDto.setIdCategoria(entity.getIdCategoria());
 		productoDto.setDescripcion(entity.getDescripcion());
 		productoDto.setUnidadMedida(entity.getUnidadMedida());
+		productoDto.setCodigoProducto(entity.getCodigoProducto());
 		
 		return productoDto;
 	}

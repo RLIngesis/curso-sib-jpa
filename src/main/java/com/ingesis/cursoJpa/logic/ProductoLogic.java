@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import com.ingesis.cursoJpa.converter.ProductoConverter;
 import com.ingesis.cursoJpa.dto.ProductoDto;
 import com.ingesis.cursoJpa.entity.Producto;
+import com.ingesis.cursoJpa.entity.ProductoPK;
 import com.ingesis.cursoJpa.service.ProductoService;
 
 @Component
@@ -27,9 +28,9 @@ public class ProductoLogic {
 		return productoConverter.toDTO(producto);
 	}
 	
-	public ProductoDto buscarPorId(Integer idProducto) {
+	public ProductoDto buscarPorId(Integer idProducto, Integer idCategoria) {
 		ProductoConverter productoConverter = new ProductoConverter();
-		Producto producto = productoService.buscarPorId(idProducto);
+		Producto producto = productoService.buscarPorId(new ProductoPK(idProducto, idCategoria));
 		ProductoDto productoDto = productoConverter.toDTO(producto);
 		return productoDto;
 	}

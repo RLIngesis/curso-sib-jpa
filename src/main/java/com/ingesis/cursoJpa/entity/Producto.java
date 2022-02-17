@@ -32,7 +32,7 @@ public class Producto implements Serializable {
 	private Integer idCategoria;
 
 	@JoinColumn(name="id_categoria", referencedColumnName = "id_categoria",insertable = false, updatable = false)
-	@ManyToOne(fetch=FetchType.EAGER) 
+	@ManyToOne 
 	private Categoria categoria;
 
 	@Column(name="codigo_producto")
