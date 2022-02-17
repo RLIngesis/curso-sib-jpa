@@ -7,11 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ingesis.cursoJpa.dto.ProductoDto;
-import com.ingesis.cursoJpa.entity.Cliente;
 import com.ingesis.cursoJpa.entity.Producto;
-import com.ingesis.cursoJpa.logic.ClienteLogic;
 import com.ingesis.cursoJpa.logic.ProductoLogic;
-import com.ingesis.cursoJpa.service.ClienteService;
 import com.ingesis.cursoJpa.service.ProductoService;
 
 @RestController
@@ -38,12 +35,13 @@ public class ProductoController {
 	@GetMapping("api/v1/producto/crear")
 	public ProductoDto crear(String codigo, String descripcion, Integer categoria,String unidadMedida) {
 		ProductoDto productoDto = new ProductoDto();
+		
 		productoDto.setCodigoProducto(codigo);
 		productoDto.setDescripcion(descripcion);
 		productoDto.setIdCategoria(categoria);
 		productoDto.setUnidadMedida(unidadMedida);
-		
-		return productoDto;
+			
+		return productoLogic.crear(productoDto);
 	}
 	
 }
