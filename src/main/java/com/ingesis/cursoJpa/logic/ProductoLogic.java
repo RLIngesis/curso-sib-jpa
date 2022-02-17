@@ -35,8 +35,18 @@ public class ProductoLogic {
 	public ProductoDto buscarPorId(Integer idProducto, Integer idCategoria) {
 		ProductoConverter productoConverter = new ProductoConverter();
 		Producto producto = productoService.buscarPorId(new ProductoPK(idProducto, idCategoria));
+		//System.out.println("find1"+producto.getCodigoProducto());
+		//Producto producto2 = productoService.buscarPorId(new ProductoPK(idProducto, idCategoria));
+		//System.out.println("find2 "+producto2.getCodigoProducto());
 		ProductoDto productoDto = productoConverter.toDTO(producto);
 		return productoDto;
+	}
+	
+	public ProductoDto modificar(Integer idProducto, Integer idCategoria,String descripcion) {
+		ProductoConverter productoConverter = new ProductoConverter();
+		productoService.modificar(idProducto, idCategoria, descripcion);
+		Producto producto = productoService.buscarPorId(new ProductoPK(idProducto, idCategoria));
+		return productoConverter.toDTO(producto);
 	}
 	
 	private Integer obtenerNuevoIdProducto() {

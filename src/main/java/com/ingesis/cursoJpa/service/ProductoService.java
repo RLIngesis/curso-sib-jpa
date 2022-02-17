@@ -21,12 +21,10 @@ public class ProductoService {
 		this.productoDao = productoDao;
 	}
 	
-	@Transactional(readOnly = true)
 	public List<Producto> findByIdCategoria(Integer idCategoria){
 		return productoDao.findByIdCategoria(idCategoria);
 	}
 
-	@Transactional(readOnly = true)
 	public Producto buscarPorId(ProductoPK productoPk){
 		return productoDao.buscarPorId(productoPk);
 	}
@@ -34,4 +32,9 @@ public class ProductoService {
 	public Producto crear(Producto producto) {
 		return productoDao.crear(producto);
 	}
+
+	public void modificar(Integer idProducto, Integer idCategoria,String descripcion) {
+		productoDao.modificar(idProducto, idCategoria, descripcion);
+	}
+
 }

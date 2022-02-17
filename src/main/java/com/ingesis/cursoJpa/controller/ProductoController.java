@@ -39,4 +39,9 @@ public class ProductoController {
 		return productoLogic.crear(producto);
 	}
 	
+	@GetMapping("api/v1/producto/modificar")
+	public ProductoDto modificar(Integer idProducto, Integer idCategoria, String descripcion) {
+		return productoLogic.modificar(idProducto, idCategoria, descripcion);
+	}
+	
 }

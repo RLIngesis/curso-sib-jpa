@@ -37,4 +37,9 @@ public class ProductoDao {
 		em.persist(producto);
 		return producto;
 	}
+	
+	public void modificar(Integer idProducto, Integer idCategoria,String desripcionProducto) {
+		Producto producto = buscarPorId(new ProductoPK(idProducto, idCategoria));
+		producto.setDescripcion(desripcionProducto);
+	}
 }

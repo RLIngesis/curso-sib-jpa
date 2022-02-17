@@ -17,6 +17,9 @@ public class ClienteDao {
 	@PersistenceContext
 	EntityManager em;
 	
+	public void crear(Cliente cliente) {
+		em.persist(cliente);
+	};
 	
 	public List<Cliente> findAllClientes(){
 		List<Cliente> listaClientes;

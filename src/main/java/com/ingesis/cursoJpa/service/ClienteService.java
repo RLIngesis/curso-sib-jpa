@@ -21,6 +21,10 @@ public class ClienteService {
 		this.clienteDao = clienteDao;
 	}
 	
+	public void crear(Cliente cliente) {
+		
+	}
+	
 	@Transactional(readOnly = true)
 	public List<Cliente> findAllClientes(){
 		return clienteDao.findAllClientes();
