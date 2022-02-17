@@ -93,6 +93,16 @@ public class FacturaLogic {
 				.collect(Collectors.toList());
 	}
 	
+	
+	public List<FacturaDto> getFullFacturaCriteriaLab(String fecha, String fechaFin, String nombre, String municipio, String vendedor, Integer... facturas) {
+		List<Factura> factura = facturaService.getFacturasByCriteriaLab(fecha, fechaFin, nombre, municipio, vendedor, facturas);
+		
+		return factura.stream()
+				.map(element-> convertFacturaDto(element))
+				.collect(Collectors.toList());
+	}
+	
+	
 	private FacturaDto convertFacturaDto(Factura factura) {
 		
 		FacturaDto facturaFull = new FacturaDto();

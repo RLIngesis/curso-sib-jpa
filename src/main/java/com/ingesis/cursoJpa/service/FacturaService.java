@@ -28,6 +28,10 @@ public class FacturaService {
 	}
 	
 	@Transactional(readOnly = true)
+	public List<Factura> getFacturasByCriteriaLab( String fecha, String fechaFin, String nombre, String municipio, String vendedor, Integer... factura){
+		return facturaDao.getFacturasByCriteriaLab(fecha, fechaFin, nombre, municipio, vendedor, factura);
+	}
+	@Transactional(readOnly = true)
 	public List<Factura> getFacturasBySinCriteria(String nombreCliente, String telefono){
 		return facturaDao.getFacturasBySinCriteria(nombreCliente, telefono);
 	}

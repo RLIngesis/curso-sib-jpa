@@ -46,6 +46,18 @@ public class FacturaController {
 		return facturaLogic.getFullFacturaCriteria(nombre, telefono, nit, fecha, fechaFin);
 	}
 	
+	@GetMapping("api/v1/facturaCriteria/lab")
+	public List<FacturaDto> getFullFacturaCriteriaLab( 
+			@RequestParam(value="fecha", required=false) String fecha,
+			@RequestParam(value="fechaFin", required=false) String fechaFin,
+			@RequestParam(value="nombre", required = false) String nombre,
+			@RequestParam(value="municipio", required = false) String municipio,
+			@RequestParam(value="vendedor", required = false) String vendedor,
+			@RequestParam(value="factura", required = false) Integer... factura
+			) {
+		return facturaLogic.getFullFacturaCriteriaLab(fecha, fechaFin, nombre, municipio, vendedor, factura);
+	}
+	
 	@GetMapping("api/v1/facturaSinCriteria")
 	public List<FacturaDto> getFullFacturaSinCriteria(@RequestParam(value="nombre", required = false) String nombre,
 			@RequestParam(value="telefono", required=false) String telefono) {

@@ -2,6 +2,7 @@ package com.ingesis.cursoJpa.dao;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -73,6 +74,10 @@ public class FacturaDao {
 		return listaFactuaras;
 	}
 	
+	public List<Factura> getFacturasByCriteriaLab( String fecha, String fechaFin, String nombre, String municipio, String vendedor, Integer... factura){
+		List<Factura> listaFactuaras = new ArrayList();
+		return listaFactuaras;
+	}
 	
 	public List<Factura> getFacturasByCriteria(String nombreCliente, String telefono, String nit, String fecha, String fechafin){
 		CriteriaBuilder cb = this.em.getCriteriaBuilder();
