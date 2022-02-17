@@ -17,6 +17,9 @@ import lombok.ToString;
 @Table(name="DETALLE_FACTURA")
 public class DetalleFactura implements Serializable{
 
+
+	private static final long serialVersionUID = 4895582291692310825L;
+
 	@EmbeddedId
 	private DetalleFacturaPK detalleFacturaId;
 	

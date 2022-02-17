@@ -8,12 +8,16 @@ import com.ingesis.cursoJpa.dto.FacturaDto;
 import com.ingesis.cursoJpa.dto.VendedorDto;
 import com.ingesis.cursoJpa.entity.Factura;
 import com.ingesis.cursoJpa.service.FacturaService;
+import com.ingesis.cursoJpa.service.InventarioService;
 
 @Component
 public class FacturaLogic {
 	
 	@Autowired
 	private FacturaService facturaService;
+	
+	@Autowired
+	private InventarioService inventarioService;
 
 	public FacturaDto getBasicFactura(Integer idFactura) {
 		Factura factura = facturaService.getFacturaById(idFactura);
@@ -28,9 +32,12 @@ public class FacturaLogic {
 		facturaBasic.setSerie(factura.getSerie());
 		facturaBasic.setNumeroFactura(factura.getNumeroFactura());
 		
-		vendedorBasic.setNombre(factura.getVendedor().getNombre());
-		vendedorBasic.setPuesto(factura.getVendedor().getPuesto());
-		facturaBasic.setVendedor(vendedorBasic);
+		if(null!=factura.getVendedor()) {
+			vendedorBasic.setNombre(factura.getVendedor().getNombre());
+			vendedorBasic.setPuesto(factura.getVendedor().getPuesto());
+			facturaBasic.setVendedor(vendedorBasic);
+		}
+
 		
 		return facturaBasic;
 	}
@@ -49,18 +56,28 @@ public class FacturaLogic {
 		facturaFull.setSerie(factura.getSerie());
 		facturaFull.setNumeroFactura(factura.getNumeroFactura());
 		
-		vendedorBasic.setNombre(factura.getVendedor().getNombre());
-		vendedorBasic.setPuesto(factura.getVendedor().getPuesto());
-		facturaFull.setVendedor(vendedorBasic);
-		
-		clienteDto.setNombre(factura.getCliente().getNombre());
-		clienteDto.setNit(factura.getCliente().getNit());
-		clienteDto.setTelefono(factura.getCliente().getTelefono());
-		clienteDto.setMunicipio(factura.getCliente().getMunicipio().getNombre());
-		facturaFull.setCliente(clienteDto);
+		if(null!=factura.getVendedor()) {
+			vendedorBasic.setNombre(factura.getVendedor().getNombre());
+			vendedorBasic.setPuesto(factura.getVendedor().getPuesto());
+			facturaFull.setVendedor(vendedorBasic);
+		}
+
+		if(null!=factura.getCliente()) {
+			clienteDto.setNombre(factura.getCliente().getNombre());
+			clienteDto.setNit(factura.getCliente().getNit());
+			clienteDto.setTelefono(factura.getCliente().getTelefono());
+			clienteDto.setMunicipio(factura.getCliente().getMunicipio().getNombre());
+			facturaFull.setCliente(clienteDto);
+		}
+
 		
 		facturaFull.cargarDetalleFactura(factura.getDetalleFactura());
 		
 		return facturaFull;
+	}
+	
+	public void crearFactura(Factura factura) {
+		facturaService.crearFactura(factura);
+		inventarioService.registrarInventario(factura.getDetalleFactura());
 	}
 }

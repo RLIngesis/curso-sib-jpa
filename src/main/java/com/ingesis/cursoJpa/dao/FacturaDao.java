@@ -8,7 +8,9 @@ import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
+import com.ingesis.cursoJpa.entity.Cliente;
 import com.ingesis.cursoJpa.entity.Factura;
+import com.ingesis.cursoJpa.entity.Vendedor;
 
 @Repository
 public class FacturaDao {
@@ -27,6 +29,11 @@ public class FacturaDao {
 		}else {
 			factura = new Factura();
 		}
+		return factura;
+	}
+	
+	public Factura crearFactura(Factura factura) {
+		em.persist(factura);
 		return factura;
 	}
 	

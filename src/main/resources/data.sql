@@ -308,3 +308,27 @@ insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categor
 insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (50,19,4,1,2,7,12.1);
 insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (51,20,5,2,1,1,400);
 insert into detalle_factura(id_detalle_factura,id_factura,id_producto,id_categoria,no_fila,cantidad,precio_unitario) values (52,20,6,2,2,9,30);
+
+insert into inventario(id_inventario,id_producto,id_categoria,cantidad,precio) values (1,1,'1',50,12*-50);
+insert into inventario(id_inventario,id_producto,id_categoria,cantidad,precio) values (2,2,'1',50,14*-50);
+insert into inventario(id_inventario,id_producto,id_categoria,cantidad,precio) values (3,3,'1',50,100*-50);
+insert into inventario(id_inventario,id_producto,id_categoria,cantidad,precio) values (4,4,'1',50,12.1*-50);
+insert into inventario(id_inventario,id_producto,id_categoria,cantidad,precio) values (5,5,'2',50,400*-50);
+insert into inventario(id_inventario,id_producto,id_categoria,cantidad,precio) values (6,6,'2',50,30*-50);
+insert into inventario(id_inventario,id_producto,id_categoria,cantidad,precio) values (7,7,'2',50,15*-50);
+insert into inventario(id_inventario,id_producto,id_categoria,cantidad,precio) values (8,8,'2',50,5*-50);
+insert into inventario(id_inventario,id_producto,id_categoria,cantidad,precio) values (9,9,'3',50,40*-50);
+insert into inventario(id_inventario,id_producto,id_categoria,cantidad,precio) values (10,10,'3',50,50*-50);
+insert into inventario(id_inventario,id_producto,id_categoria,cantidad,precio) values (11,11,'3',50,40*-50);
+insert into inventario(id_inventario,id_producto,id_categoria,cantidad,precio) values (12,12,'3',50,25*-50);
+insert into inventario(id_inventario,id_producto,id_categoria,cantidad,precio) values (13,13,'4',50,20*-50);
+insert into inventario(id_inventario,id_producto,id_categoria,cantidad,precio) values (14,14,'4',50,10*-50);
+insert into inventario(id_inventario,id_producto,id_categoria,cantidad,precio) values (15,15,'4',50,20*-50);
+insert into inventario(id_inventario,id_producto,id_categoria,cantidad,precio) values (16,16,'4',50,22*-50);
+insert into inventario(id_inventario,id_producto,id_categoria,cantidad,precio) values (17,17,'5',50,17*-50);
+insert into inventario(id_inventario,id_producto,id_categoria,cantidad,precio) values (18,18,'5',50,12*-50);
+insert into inventario(id_inventario,id_producto,id_categoria,cantidad,precio) values (19,19,'5',50,20*-50);
+insert into inventario(id_inventario,id_producto,id_categoria,cantidad,precio) values (20,20,'5',50,15*-50);
+
+
+insert into cfg_secuencia(cod_secuencia,correlativo) values('id_inventario',20);

@@ -15,7 +15,7 @@ public class CursoJpaSinLevantarSprigBoot {
 	private void testPersistenceContext() {
 		TestPersistenceContext testPersistenceContext = new TestPersistenceContext("jpa-pu");
 
-		testPersistenceContext.probarLazyAndEagerLoading();
+//		testPersistenceContext.probarLazyAndEagerLoading();
 //		testPersistenceContext.probandoEstadoManagedConTranaccion();
 //		testPersistenceContext.probandoEstadoManagedSinTranaccion();
 //		testPersistenceContext.probandoEstadoManagedTranaccionPosterior();

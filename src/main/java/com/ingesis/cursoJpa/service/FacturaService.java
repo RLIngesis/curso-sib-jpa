@@ -1,6 +1,7 @@
 package com.ingesis.cursoJpa.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,9 +15,14 @@ public class FacturaService {
 	
 	@Autowired
 	private FacturaDao facturaDao;
-	
+
 	@Transactional(readOnly=true)
 	public Factura getFacturaById(Integer idFactura) {
 		return facturaDao.getFacturaById(idFactura);
+	}
+	
+
+	public Factura crearFactura(Factura factura) {
+		return facturaDao.crearFactura(factura);
 	}
 }

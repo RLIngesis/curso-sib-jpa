@@ -4,11 +4,13 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -24,6 +26,9 @@ import lombok.Data;
 @Entity
 @Table(name="FACTURA")
 public class Factura implements Serializable{
+
+	private static final long serialVersionUID = 4891730397972820195L;
+
 	@Id
 	@Column(name="id_factura")
 	private Integer idFactura;
@@ -37,14 +42,15 @@ public class Factura implements Serializable{
 	@Column(name = "id_cliente")
 	private Integer idCliente;
 	
-	@Column(name = "id_vendedor", insertable = false, updatable = false)
+	@Column(name = "id_vendedor")
 	private Integer idVendedor;
 	
+
 	@JoinColumn(name = "id_cliente", referencedColumnName="id_cliente", insertable = false, updatable = false)
 	@ManyToOne (fetch = FetchType.LAZY) 
 	private Cliente cliente;
 	 
-	@JoinColumn(name = "id_vendedor", referencedColumnName = "id_vendedor")
+	@JoinColumn(name = "id_vendedor", referencedColumnName = "id_vendedor", insertable = false, updatable = false)
 	@ManyToOne(fetch = FetchType.EAGER) 
 	private Vendedor Vendedor; 
 	 
@@ -54,7 +60,7 @@ public class Factura implements Serializable{
 	@Column(name="monto_total")
 	private Double montoTotal;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "factura") 
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "factura",cascade = CascadeType.PERSIST) 
 	private List<DetalleFactura> detalleFactura;
 	
 

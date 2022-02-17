@@ -49,7 +49,7 @@ public class Cliente implements Serializable {
     @JoinColumn(name = "id_municipio", referencedColumnName = "id_municipio",nullable=false)
 	@ManyToOne 
 	private Municipio municipio;
-	
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -65,8 +65,6 @@ public class Cliente implements Serializable {
 	public int hashCode() {
 		return Objects.hash(idCliente);
 	}
-
-
-    
+ 
      
 }
