@@ -23,12 +23,17 @@ public class FacturaService {
 	}
 	
 	@Transactional(readOnly = true)
-	public List<Factura> getFacturasByCriteria(String nombreCliente, String telefono, String nit){
-		return facturaDao.getFacturasByCriteria(nombreCliente, telefono, nit);
+	public List<Factura> getFacturasByCriteria(String nombreCliente, String telefono, String nit, String fecha, String fechaFin){
+		return facturaDao.getFacturasByCriteria(nombreCliente, telefono, nit, fecha, fechaFin);
 	}
 	
 	@Transactional(readOnly = true)
 	public List<Factura> getFacturasBySinCriteria(String nombreCliente, String telefono){
 		return facturaDao.getFacturasBySinCriteria(nombreCliente, telefono);
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Factura> getFacturasByItemMonto(Double monto) {
+		return facturaDao.getFacturasByItemMonto(monto);
 	}
 }

@@ -40,13 +40,20 @@ public class FacturaController {
 	@GetMapping("api/v1/facturaCriteria")
 	public List<FacturaDto> getFullFacturaCriteria(@RequestParam(value="nombre", required = false) String nombre, 
 			@RequestParam(value="telefono", required=false) String telefono,
-			@RequestParam(value="nit", required=false) String nit) {
-		return facturaLogic.getFullFacturaCriteria(nombre, telefono, nit);
+			@RequestParam(value="nit", required=false) String nit,
+			@RequestParam(value="fecha", required=false) String fecha,
+			@RequestParam(value="fechaFin", required=false) String fechaFin) {
+		return facturaLogic.getFullFacturaCriteria(nombre, telefono, nit, fecha, fechaFin);
 	}
 	
 	@GetMapping("api/v1/facturaSinCriteria")
 	public List<FacturaDto> getFullFacturaSinCriteria(@RequestParam(value="nombre", required = false) String nombre,
 			@RequestParam(value="telefono", required=false) String telefono) {
 		return facturaLogic.getFullFacturaSinCriteria(nombre, telefono);
+	}
+	
+	@GetMapping("api/v1/facturaItemMonto")
+	public List<FacturaDto> getFacturasByItemMonto(@RequestParam(value="monto", required = false) Double monto) {
+		return facturaLogic.getFacturasByItemMonto(monto);
 	}
 }

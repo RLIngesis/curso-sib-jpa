@@ -20,8 +20,13 @@ public class ProductoController {
 
 	
 	@GetMapping("api/v1/findByIdCategoria")
-	public List<Producto> getClientes(Integer idCategoria) {
+	public List<Producto> getProductos(Integer idCategoria) {
 		return productoService.findByIdCategoria(idCategoria);
+	}
+	
+	@GetMapping("api/v1/findBYVentasDep")
+	public List<Producto> getProductosByVentasDep(Integer... departamento) {
+		return productoService.getProductoVendidosPorDepartamentos(departamento);
 	}
 	
 }

@@ -30,4 +30,9 @@ public class ProductoService {
 	}
 	
 	
+	@Transactional(readOnly = true)
+	public List<Producto> getProductoVendidosPorDepartamentos(Integer... departamento){
+		return productoDao.getProductoVendidosPorDepartamentos(departamento);
+	}
+
 }

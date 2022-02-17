@@ -68,6 +68,14 @@ public class FacturaLogic {
 		return facturaFull;
 	}
 	
+	public List<FacturaDto> getFacturasByItemMonto(Double monto) {
+		List<Factura> factura = facturaService.getFacturasByItemMonto(monto);
+		
+		return factura.stream()
+				.map(element-> convertFacturaDto(element))
+				.collect(Collectors.toList());
+	}
+	
 	public List<FacturaDto> getFullFacturaSinCriteria(String nombre, String telefono) {
 		List<Factura> factura = facturaService.getFacturasBySinCriteria(nombre, telefono);
 		
@@ -77,8 +85,8 @@ public class FacturaLogic {
 	}
 	
 
-	public List<FacturaDto> getFullFacturaCriteria(String nombre, String telefono, String nit) {
-		List<Factura> factura = facturaService.getFacturasByCriteria(nombre, telefono, nit);
+	public List<FacturaDto> getFullFacturaCriteria(String nombre, String telefono, String nit, String fecha, String fechaFin) {
+		List<Factura> factura = facturaService.getFacturasByCriteria(nombre, telefono, nit, fecha, fechaFin);
 		
 		return factura.stream()
 				.map(element-> convertFacturaDto(element))
