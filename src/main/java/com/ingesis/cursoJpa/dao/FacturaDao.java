@@ -75,7 +75,107 @@ public class FacturaDao {
 	}
 	
 	public List<Factura> getFacturasByCriteriaLab( String fecha, String fechaFin, String nombre, String municipio, String vendedor, Integer... factura){
-		List<Factura> listaFactuaras = new ArrayList();
+		CriteriaBuilder cb = this.em.getCriteriaBuilder();
+		CriteriaQuery<Factura> cq = cb.createQuery(Factura.class);
+		
+		Root<Factura> emi = cq.from(Factura.class);
+		
+		CriteriaQuery<Factura> select = cq.select(emi);
+		
+		Expression where = null;
+		
+		if(nombre != null && nombre.length()>0) {
+			Expression c1 = emi.get("cliente").get("nombre");
+			Expression c2 = cb.literal("%"+nombre+"%");
+			
+			Expression comparacion = cb.like(c1, c2);
+			if(where==null) {
+				where = comparacion;
+			} else {
+				where = cb.and(where,comparacion);
+			}
+		}
+		
+		if(municipio != null && municipio.length()>0) {
+			Expression c1 = emi.get("cliente").get("municipio").get("nombre");
+			Expression c2 = cb.literal("%"+municipio+"%");
+			
+			Expression comparacion = cb.like(c1, c2);
+			if(where==null) {
+				where = comparacion;
+			} else {
+				where = cb.and(where,comparacion);
+			}
+		}
+		
+		if(vendedor != null && vendedor.length()>0) {
+			Expression c1 = emi.get("Vendedor").get("nombre");
+			Expression c2 = cb.literal("%"+vendedor+"%");
+			
+			Expression comparacion = cb.like(c1, c2);
+			if(where==null) {
+				where = comparacion;
+			} else {
+				where = cb.and(where,comparacion);
+			}
+		}
+		
+		if(factura != null && factura.length>0) {
+			Expression c1 = emi.get("numeroFactura");
+			Expression comparacion = c1.in(factura);
+			
+			if(where==null) {
+				where = comparacion;
+			} else {
+				where = cb.and(where,comparacion);
+			}
+		}
+		
+		if((fecha==null || fecha.length()==0) && (fechaFin!=null && fechaFin.length()>0)) {
+			Expression c1 = emi.get("fecha");
+			Expression c2 = cb.literal(convertStringToDate(fechaFin));
+			
+			Expression comparacion = cb.le(c1, c2);
+			
+			if(where==null) {
+				where = comparacion;
+			} else {
+				where = cb.and(where, comparacion);
+			}
+		} else if((fecha!=null && fecha.length()>0) && (fechaFin==null || fechaFin.length()==0)) {
+			Expression c1 = emi.get("fecha");
+			Expression c2 = cb.literal(convertStringToDate(fecha));
+			
+			Expression comparacion = cb.ge(c1, c2);
+			
+			if(where==null) {
+				where = comparacion;
+			} else {
+				where = cb.and(where, comparacion);
+			}
+		} else if((fecha!=null && fecha.length()>0) && (fechaFin!=null && fechaFin.length()>0)) {
+			Expression c1 = emi.get("fecha");
+			Expression c2 = cb.literal(convertStringToDate(fecha));
+			Expression c3 = cb.literal(convertStringToDate(fechaFin));
+			
+			Expression comparacion = cb.between(c1, c2, c3);
+			
+			if(where==null) {
+				where = comparacion;
+			} else {
+				where = cb.and(where, comparacion);
+			}
+		}
+		
+		if (where!=null) {
+			select.where(where);
+		}
+		
+		select.orderBy(cb.asc(emi.get("cliente").get("nit")));
+		
+		TypedQuery<Factura> q = this.em.createQuery(select);
+		List<Factura> listaFactuaras = q.getResultList();
+		
 		return listaFactuaras;
 	}
 	
