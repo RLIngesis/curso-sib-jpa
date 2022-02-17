@@ -1,5 +1,8 @@
 package com.ingesis.cursoJpa.logic;
 
+import java.util.Random;
+import java.util.stream.IntStream;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -24,6 +27,7 @@ public class ProductoLogic {
 	public ProductoDto crear(ProductoDto productoDto) {
 		ProductoConverter productoConverter = new ProductoConverter();
 		Producto producto = productoConverter.toEntity(productoDto);
+		producto.setIdProducto(obtenerNuevoIdProducto());
 		producto = productoService.crear(producto);
 		return productoConverter.toDTO(producto);
 	}
@@ -33,6 +37,11 @@ public class ProductoLogic {
 		Producto producto = productoService.buscarPorId(new ProductoPK(idProducto, idCategoria));
 		ProductoDto productoDto = productoConverter.toDTO(producto);
 		return productoDto;
+	}
+	
+	private Integer obtenerNuevoIdProducto() {
+		Random random = new Random();
+		return random.nextInt(100*3);
 	}
 	
 }

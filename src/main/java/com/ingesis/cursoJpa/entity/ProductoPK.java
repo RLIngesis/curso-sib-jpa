@@ -10,6 +10,8 @@ import lombok.Data;
 @Data
 public class ProductoPK implements Serializable {
 
+	private static final long serialVersionUID = -9126206135863447385L;
+
 	@Column(name="id_producto")
 	private Integer idProducto;
 	

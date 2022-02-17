@@ -4,7 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
@@ -22,6 +23,8 @@ import lombok.Data;
 @IdClass(ProductoPK.class)
 @Table(name="PRODUCTO")
 public class Producto implements Serializable {
+
+	private static final long serialVersionUID = -4841150777330591470L;
 
 	@Id
 	@Column(name="id_producto")

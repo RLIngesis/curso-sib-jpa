@@ -8,8 +8,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ingesis.cursoJpa.dao.ClienteDao;
-import com.ingesis.cursoJpa.dto.ClienteDto;
-import com.ingesis.cursoJpa.entity.Categoria;
 import com.ingesis.cursoJpa.entity.Cliente;
 
 @Service
