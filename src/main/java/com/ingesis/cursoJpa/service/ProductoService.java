@@ -28,6 +28,13 @@ public class ProductoService {
 	public List<Producto> findByIdCategoria(Integer idCategoria){
 		return productoDao.findByIdCategoria(idCategoria);
 	}
-	
-	
+
+	@Transactional(readOnly = true)
+	public Producto buscarPorId(Integer idProducto){
+		return productoDao.buscarPorId(idProducto);
+	}
+
+	public Producto crear(Producto producto) {
+		return productoDao.crear(producto);
+	}
 }
