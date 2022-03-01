@@ -43,7 +43,7 @@ public class Factura implements Serializable{
 	@Column(name="monto_total")
 	private Double montoTotal;
 
-	@JoinColumn(name = "idFactura", referencedColumnName = "idFactura", insertable = false, updatable = false)
+	@JoinColumn(name = "id_factura", referencedColumnName = "id_factura", insertable = false, updatable = false)
 	@OneToMany(fetch=FetchType.LAZY) 
 	private List<DetalleFactura> detalleFactura;
 	 
