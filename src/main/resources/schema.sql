@@ -13,4 +13,4 @@ create table factura ( id_factura number, id_cliente number, id_vendedor number,
 create table detalle_factura (id_detalle_factura number, id_factura number, id_producto number,	id_categoria number, no_fila number, precio_unitario number(15,2),	cantidad number, primary key (id_detalle_factura),	foreign key (id_producto,id_categoria) references producto(id_producto,id_categoria) ,	foreign key (id_factura) references factura(id_factura));
 create table cfg_secuencia (cod_secuencia varchar, correlativo number, primary key (cod_secuencia));
 create table auditoria (id_auditoria number, mensaje varchar, primary key (id_auditoria));
-create table demo_csv_file (id number, process_id varchar, linetext primary key (id_auditoria));
+create table demo_csv_file (id number, process_id varchar, linetext varchar, primary key (id));

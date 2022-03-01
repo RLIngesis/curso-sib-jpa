@@ -8,18 +8,27 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import com.ingesis.cursoJpa.TimeTracker;
 import com.ingesis.cursoJpa.entity.CsvFile;
 import org.springframework.beans.factory.annotation.Autowired;
 
+@Service
 public class CsvFileService {
-    @Autowired
+    
     private TimeTracker timeTracker;
+    
     @PersistenceContext
     private EntityManager em;
-    @Value("${com.ingesis.batch.commitRows}")
-    private Integer commitRows;
+    
+    private Integer commitRows = 500;
+    
+    
+    @Autowired
+    public CsvFileService (TimeTracker timeTracker) {
+    	this.timeTracker = timeTracker;
+    }
 	
 	@Transactional
     public void insert(List<CsvFile> csvFileList) {
