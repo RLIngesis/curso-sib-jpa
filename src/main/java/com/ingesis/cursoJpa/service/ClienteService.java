@@ -11,45 +11,64 @@ import com.ingesis.cursoJpa.dao.ClienteDao;
 import com.ingesis.cursoJpa.entity.Cliente;
 
 @Service
-@Transactional(propagation = Propagation.REQUIRES_NEW)
+@Transactional
 public class ClienteService {
 	
 	private ClienteDao clienteDao;
+	
+	
+	@Autowired
+	private ServicioAuditoria servicioAuditoria;
 	
 	@Autowired
 	public ClienteService(ClienteDao clienteDao) {
 		this.clienteDao = clienteDao;
 	}
 	
-	@Transactional(readOnly = true)
+	public void crear(Cliente cliente) {
+		servicioAuditoria.log("Pre cliente: "+cliente.getNombre());
+		clienteDao.crea(cliente);
+	}
+	
 	public List<Cliente> findAllClientes(){
 		return clienteDao.findAllClientes();
 	}
 	
-	@Transactional(readOnly = true)
 	public Cliente findClienteById(Integer idCliente){
-		return clienteDao.findClienteById(idCliente);
+		Cliente cliente = clienteDao.findClienteById(idCliente);
+		servicioAuditoria.log(cliente);
+		
+		if (cliente.getConsultas() > 3) {
+			throw new RuntimeException("Muchas consultas");
+		}
+		
+		return cliente;
 	}
 	
-	@Transactional(readOnly = true)
 	public Cliente findClienteByReference(Integer idCliente){
 		Cliente cliente = clienteDao.findClienteByReference(idCliente);
 		return cliente;
 	}
 	
-	@Transactional(readOnly = true)
 	public Cliente findClienteByNombreAndNit(String nombre, String nit){
 		return clienteDao.findClienteByNameAndNit(nombre, nit);
 	}
 	
-	@Transactional(readOnly = true)
 	public List<Cliente> findAllByPais(Integer idPais){
 		return clienteDao.findAllByPais(idPais);
 	}
 	
-	@Transactional(readOnly = true)
 	public List<Cliente> findAllByDepartamento(Integer idDepartamento) {
 		return clienteDao.findAllByDepartamento(idDepartamento);
+	}
+	
+	public void llenarDataTestRendimiento() {
+		clienteDao.llenarDataTestRendimiento();
+	}
+	
+	@Transactional(readOnly=true)
+	public List<Cliente> problemaDeRendimiento() {
+		return clienteDao.consultaTodoLosClientes();
 	}
 	
 }

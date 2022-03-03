@@ -46,6 +46,9 @@ public class Cliente implements Serializable {
     @Column(nullable = false)
     private String email;
     
+    @Column(nullable = false)
+    private Integer consultas;
+    
     @JoinColumn(name = "id_municipio", referencedColumnName = "id_municipio",nullable=false)
 	@ManyToOne 
 	private Municipio municipio;

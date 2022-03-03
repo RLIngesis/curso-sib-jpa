@@ -332,3 +332,5 @@ insert into inventario(id_inventario,id_producto,id_categoria,cantidad,precio) v
 
 
 insert into cfg_secuencia(cod_secuencia,correlativo) values('id_inventario',20);
+insert into cfg_secuencia(cod_secuencia,correlativo) values('id_auditoria',1);
+insert into cfg_secuencia(cod_secuencia,correlativo) values('id_csv_file',1);
