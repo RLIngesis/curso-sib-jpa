@@ -25,7 +25,7 @@ public class InventarioController {
 
 	
 	@GetMapping("api/v1/inventario")
-	public Inventario getCliente(Integer idInventario) {
+	public Inventario getInventarioById(Integer idInventario) {
 		return inventarioService.getInventarioById(idInventario);
 	}
 	
@@ -36,7 +36,7 @@ public class InventarioController {
 
 	
 	@PostMapping("api/v1/inventario")
-	public Inventario crearFactura(@RequestBody Inventario inventario) {
+	public Inventario crearInventario(@RequestBody Inventario inventario) {
 		return inventarioService.crearInventario(inventario);
 	}
 	

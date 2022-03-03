@@ -75,9 +75,4 @@ public class FacturaLogic {
 		
 		return facturaFull;
 	}
-	
-	public void crearFactura(Factura factura) {
-		facturaService.crearFactura(factura);
-		inventarioService.registrarInventario(factura.getDetalleFactura());
-	}
 }

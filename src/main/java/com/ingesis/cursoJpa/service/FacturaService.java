@@ -20,9 +20,4 @@ public class FacturaService {
 	public Factura getFacturaById(Integer idFactura) {
 		return facturaDao.getFacturaById(idFactura);
 	}
-	
-
-	public Factura crearFactura(Factura factura) {
-		return facturaDao.crearFactura(factura);
-	}
 }

@@ -32,9 +32,4 @@ public class FacturaDao {
 		return factura;
 	}
 	
-	public Factura crearFactura(Factura factura) {
-		em.persist(factura);
-		return factura;
-	}
-	
 }

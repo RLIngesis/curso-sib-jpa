@@ -67,23 +67,4 @@ public class InventarioDao {
 		
 		return inventarioAux;
 	}
-	
-	public void actualizarInventarioPorDetalleFactura(List<DetalleFactura> detalleFactura) {
-		if(null != detalleFactura && detalleFactura.size() > 0) {
-			for(DetalleFactura detalle: detalleFactura) {
-				Inventario inventario = new Inventario();
-				InventarioPK inventarioPk = new InventarioPK();
-				
-				inventario.setCantidad(detalle.getCantidad()*-1);
-				inventario.setPrecio(detalle.getPrecioUnitario());
-				
-				inventarioPk.setIdProducto(detalle.getDetalleFacturaId().getIdProducto());
-				inventarioPk.setIdCategoria(detalle.getDetalleFacturaId().getIdCategoria());
-				
-				inventario.setInventarioId(inventarioPk);
-				em.persist(inventario);
-			}
-		}
-	}
-	
 }

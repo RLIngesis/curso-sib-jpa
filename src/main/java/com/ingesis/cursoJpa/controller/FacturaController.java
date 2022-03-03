@@ -36,13 +36,12 @@ public class FacturaController {
 		return facturaLogic.getFullFactura(idFactura);
 	}
 	
-	@PostMapping("api/v1/factura")
-	public Factura crearFactura(@RequestBody Factura factura) {
-		return facturaService.crearFactura(factura);
-	}
-	
-	@PostMapping("api/v1/facturaAndInventory")
-	public void crearFacturaAndInsertInventory(@RequestBody Factura factura) {
-		 facturaLogic.crearFactura(factura);
-	}
+	/*
+	 * @PostMapping("api/v1/factura") public Factura crearFactura(@RequestBody
+	 * Factura factura) { return facturaService.crearFactura(factura); }
+	 * 
+	 * @PostMapping("api/v1/facturaAndInventory") public void
+	 * crearFacturaAndInsertInventory(@RequestBody Factura factura) {
+	 * facturaLogic.crearFactura(factura); }
+	 */
 }

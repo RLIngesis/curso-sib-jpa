@@ -1,6 +1,7 @@
 package com.ingesis.cursoJpa.entity;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,4 +24,22 @@ public class Categoria implements Serializable {
 	
 	@Column(nullable = false, length = 400)
 	private String descripcion;
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof Categoria))
+			return false;
+		Categoria other = (Categoria) obj;
+		return Objects.equals(descripcion, other.getDescripcion()) && Objects.equals(idCategoria, other.getIdCategoria())
+				&& Objects.equals(nombre, other.getNombre());
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(descripcion, idCategoria, nombre);
+	}
+
+
 }
