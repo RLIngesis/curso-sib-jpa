@@ -75,7 +75,7 @@ public class InventarioDao {
 				InventarioPK inventarioPk = new InventarioPK();
 				
 				inventario.setCantidad(detalle.getCantidad()*-1);
-				inventario.setPrecio(detalle.getPrecioUnitario());
+				inventario.setPrecio(detalle.getPrecioUnitario()*detalle.getCantidad());
 				
 				inventarioPk.setIdProducto(detalle.getDetalleFacturaId().getIdProducto());
 				inventarioPk.setIdCategoria(detalle.getDetalleFacturaId().getIdCategoria());

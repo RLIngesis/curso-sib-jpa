@@ -34,10 +34,12 @@ public class InventarioService {
 		return inventarioDao.findInventarioByIdProducto(idProducto);
 	}
 	
+	@Transactional
 	public Inventario crearInventario(Inventario inventario) {
 		return inventarioDao.crearInventario(inventario);
 	}
 	
+	@Transactional
 	public void registrarInventario(List<DetalleFactura> detalleFactura) {
 		 inventarioDao.actualizarInventarioPorDetalleFactura(detalleFactura);
 	}

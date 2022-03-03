@@ -21,7 +21,7 @@ public class FacturaService {
 		return facturaDao.getFacturaById(idFactura);
 	}
 	
-
+	@Transactional
 	public Factura crearFactura(Factura factura) {
 		return facturaDao.crearFactura(factura);
 	}
