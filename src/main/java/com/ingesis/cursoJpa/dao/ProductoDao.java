@@ -16,7 +16,7 @@ import com.ingesis.cursoJpa.entity.ProductoPK;
 public class ProductoDao {
 	
 	@PersistenceContext
-	EntityManager em;
+	private EntityManager em;
 	
 	public List<Producto> findByIdCategoria(Integer idCategoria){
 		Query query = em.createNamedQuery("findByIdCategoria")

@@ -123,7 +123,8 @@ public class ClienteDao {
 			query.setParameter("fin", (i + 1) * 1000L);
 			
 			resultado.addAll(query.getResultList());
-			//em.clear();
+			//Se debe hacer un clear para que libere la caché del jpa
+			em.clear();
 		}
 		
 		return resultado;

@@ -77,10 +77,10 @@ public class ClienteController {
 		
 		StopWatch sp = new StopWatch();
 		sp.start("consulta");
-		int nombre = clienteService.problemaDeRendimiento().size();
+		int size = clienteService.problemaDeRendimiento().size();
 		sp.stop();
 		System.out.println(sp.prettyPrint());
-		return nombre;
+		return size;
 		
 	}
 	
